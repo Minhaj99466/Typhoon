@@ -1,0 +1,133 @@
+# Typhoon Solar Website README
+
+Welcome to the Typhoon Solar website repository! This README file will guide you through the setup, development, and deployment of the Typhoon Solar website.
+
+## Table of Contents
+
+1. [Project Overview](#project-overview)
+2. [Features](#features)
+3. [Technologies Used](#technologies-used)
+4. [Setup and Installation](#setup-and-installation)
+5. [Usage](#usage)
+6. [Contributing](#contributing)
+7. [License](#license)
+8. [Contact](#contact)
+
+## Project Overview
+
+Typhoon Solar is an e-commerce website dedicated to selling high-quality solar products. Our mission is to provide sustainable energy solutions to individuals and businesses. This website serves as the online platform for browsing, selecting, and purchasing our solar products.
+
+## Features
+
+- **Product Catalog**: Browse through a wide range of solar products.
+- **Product Details**: View detailed information about each product.
+- **Shopping Cart**: Add products to your cart and review your selections.
+- **Checkout**: Securely complete your purchase.
+- **User Accounts**: Create and manage your account for a personalized experience.
+- **Search Functionality**: Easily find products using the search bar.
+- **Responsive Design**: Accessible on all devices including desktops, tablets, and smartphones.
+
+## Technologies Used
+
+- **Frontend**: HTML, CSS, JavaScript, React
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB
+- **Authentication**: JWT (JSON Web Tokens)
+- **Payment Gateway**: Stripe
+- **Version Control**: Git
+- **Hosting**: [Your Hosting Provider]
+
+## Setup and Installation
+
+### Prerequisites
+
+Ensure you have the following installed on your machine:
+
+- Node.js (v12 or higher)
+- npm (v6 or higher)
+- MongoDB (v4 or higher)
+- Git
+
+### Installation Steps
+
+1. **Clone the repository:**
+
+    ```bash
+    git clone https://github.com/your-username/typhoon-solar.git
+    cd typhoon-solar
+    ```
+
+2. **Install dependencies:**
+
+    ```bash
+    npm install
+    ```
+
+3. **Set up environment variables:**
+
+    Create a `.env` file in the root directory and add the following variables:
+
+    ```plaintext
+    MONGO_URI=your_mongodb_connection_string
+    JWT_SECRET=your_jwt_secret
+    STRIPE_SECRET_KEY=your_stripe_secret_key
+    ```
+
+4. **Start the development server:**
+
+    ```bash
+    npm run dev
+    ```
+
+    The website should now be running at `http://localhost:3000`.
+
+## Usage
+
+- **Visit the website**: Open your browser and navigate to `http://localhost:3000`.
+- **Browse products**: Explore the product catalog and view details of each item.
+- **Add to cart**: Select products and add them to your shopping cart.
+- **Checkout**: Complete the purchase using the secure checkout process.
+- **Manage account**: Sign up or log in to manage your user account and view order history.
+
+## Contributing
+
+We welcome contributions to enhance the Typhoon Solar website! To contribute:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix:
+   
+    ```bash
+    git checkout -b feature/your-feature-name
+    ```
+
+3. Commit your changes:
+   
+    ```bash
+    git commit -m 'Add some feature'
+    ```
+
+4. Push to the branch:
+   
+    ```bash
+    git push origin feature/your-feature-name
+    ```
+
+5. Open a pull request and describe your changes.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+## Contact
+
+For any questions or support, please contact:
+
+- **Name**: [Your Name]
+- **Email**: [Your Email]
+- **Website**: [Your Website]
+
+Thank you for visiting Typhoon Solar! We hope you enjoy your experience with our products.
+
+---
+
+*Note: Replace placeholders like `your-username`, `your_mongodb_connection_string`, `your_jwt_secret`, `your_stripe_secret_key`, `Your Name`, `Your Email`, and `Your Website` with actual values.*
