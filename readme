@@ -9,9 +9,7 @@ Welcome to the Typhoon Solar website repository! This README file will guide you
 3. [Technologies Used](#technologies-used)
 4. [Setup and Installation](#setup-and-installation)
 5. [Usage](#usage)
-6. [Contributing](#contributing)
-7. [License](#license)
-8. [Contact](#contact)
+6. [Contact](#contact)
 
 ## Project Overview
 
@@ -29,13 +27,13 @@ Typhoon Solar is an e-commerce website dedicated to selling high-quality solar p
 
 ## Technologies Used
 
-- **Frontend**: HTML, CSS, JavaScript, React
+- **Frontend**: HTML, CSS, JavaScript
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB
-- **Authentication**: JWT (JSON Web Tokens)
+<!-- - **Authentication**: JWT (JSON Web Tokens) -->
 - **Payment Gateway**: Stripe
 - **Version Control**: Git
-- **Hosting**: [Your Hosting Provider]
+<!-- - **Hosting**: [Your Hosting Provider] -->
 
 ## Setup and Installation
 
@@ -53,7 +51,7 @@ Ensure you have the following installed on your machine:
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/your-username/typhoon-solar.git
+    git clone https://github.com/Minhaj99466/typhoon-solar.git
     cd typhoon-solar
     ```
 
@@ -89,45 +87,13 @@ Ensure you have the following installed on your machine:
 - **Checkout**: Complete the purchase using the secure checkout process.
 - **Manage account**: Sign up or log in to manage your user account and view order history.
 
-## Contributing
-
-We welcome contributions to enhance the Typhoon Solar website! To contribute:
-
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix:
-   
-    ```bash
-    git checkout -b feature/your-feature-name
-    ```
-
-3. Commit your changes:
-   
-    ```bash
-    git commit -m 'Add some feature'
-    ```
-
-4. Push to the branch:
-   
-    ```bash
-    git push origin feature/your-feature-name
-    ```
-
-5. Open a pull request and describe your changes.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
 ## Contact
 
 For any questions or support, please contact:
 
-- **Name**: [Your Name]
-- **Email**: [Your Email]
-- **Website**: [Your Website]
+- **Name**: Minhaj mm
+- **Email**: minhaj99466@gmail.com
 
 Thank you for visiting Typhoon Solar! We hope you enjoy your experience with our products.
 
----
-
-*Note: Replace placeholders like `your-username`, `your_mongodb_connection_string`, `your_jwt_secret`, `your_stripe_secret_key`, `Your Name`, `Your Email`, and `Your Website` with actual values.*
