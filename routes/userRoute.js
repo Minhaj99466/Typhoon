@@ -12,17 +12,21 @@ userRoute.set('views','./views/user')
 
 userRoute.get('/',auth.userIsLogin,userController.loadHome)
 userRoute.get('/home',auth.userIsLogin,userController.loadHome)
+userRoute.post('/register',userController.insertUser)
+userRoute.get('/register',auth.userIsLogout,userController.loadRegister)
+userRoute.get('/login',auth.userIsLogout,userController.loadLogin)
+userRoute.post('/login',userController.verifyLogin)
+userRoute.get('/logout',auth.userIsLogin,userController.userLogout);
+
+
 userRoute.get('/cart',userController.loadCart)
 userRoute.get('/about',userController.loadAbout)
 userRoute.get('/checkout',userController.loadCheckOut)
 userRoute.get('/contact',userController.loadContactUs)
 userRoute.get('/error',userController.loadError)
-userRoute.get('/login',auth.userIsLogout,userController.loadLogin)
-userRoute.get('/register',auth.userIsLogout,userController.loadRegister)
 userRoute.get('/service',userController.loadService)
 userRoute.get('/shop',userController.loadShop)
 
-userRoute.post('/register',userController.insertUser)
 
 
 module.exports= userRoute

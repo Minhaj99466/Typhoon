@@ -1,25 +1,5 @@
-const securePassword = require("../utils/securepassword");
+const utils = require("../utils/securepassword");
 const userModel = require("../model/userModel");
-
-//============================  HOME PAGE LOAD ========================//
-
-const loadHome = async (req, res, next) => {
-  try {
-    res.render("home", { session: req.session });
-  } catch (error) {
-    next(error);
-  }
-};
-
-//============================  LOGIN PAGE LOAD ========================//
-
-const loadLogin = async (req, res, next) => {
-  try {
-    res.render("login");
-  } catch (error) {
-    next(error);
-  }
-};
 
 //============================= REGISTRATION PAGE LOAD ==================//
 
@@ -33,7 +13,7 @@ const loadRegister = async (req, res, next) => {
 
 const insertUser = async (req, res, next) => {
   try {
-    const spassword = await securePassword(req.body.password);
+    const spassword = await utils.securePassword(req.body.password);
     const existingUser = await userModel.exists({ email: req.body.email });
     if (existingUser) {
       return res.render("register", { message: "Email is already registered" });
@@ -68,6 +48,65 @@ const insertUser = async (req, res, next) => {
   }
 };
 
+//============================  HOME PAGE LOAD ========================//
+
+const loadHome = async (req, res, next) => {
+  try {
+    res.render("home", { session: req.session });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const userLogout = async (req, res, next) => {
+  try {
+    req.session.destroy();
+    res.redirect("/");
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+//============================  LOGIN PAGE LOAD ========================//
+
+const loadLogin = async (req, res, next) => {
+  try {
+    res.render("login");
+  } catch (error) {
+    next(error);
+  }
+};
+
+const verifyLogin = async (req,res, next) => {
+  try{
+    console.log(req.body)
+    const userData = await User.findOne({email:req.body.email});
+    if(userData){
+        const passwordMatch = await utils.comparePassword(req.body.password,userData.password);
+        if(passwordMatch){
+            if(userData.is_verified === true){
+                if(userData.is_block === true){
+                    res.render('login',{message:'user is blocked'})
+                
+                }else{
+                    req.session.user_id = userData._id;
+                    res.redirect('/home')
+                }
+            }else{
+                res.render('login',{message:'Email and pasword is incorrect'})
+            }
+        }
+        else{
+            res.render('login',{message:'Email and pasword is incorrect'})
+        }
+    }
+    else{
+        res.render('login',{message:'Email and pasword is incorrect'})
+    }
+  }catch(error){
+    console.log(error)
+  }
+}
 //=============================   CART PAGE LOAD  ========================//
 
 const loadCart = async (req, res, next) => {
@@ -141,6 +180,8 @@ const loadShop = async (req, res, next) => {
 module.exports = {
   loadLogin,
   loadHome,
+  userLogout,
+  verifyLogin,
   loadCart,
   loadAbout,
   loadCheckOut,
