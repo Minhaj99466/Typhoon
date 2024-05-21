@@ -1,6 +1,7 @@
 const express = require("express");
 const distributorRoute = express();
 const distributorController = require("../controller/distributorController");
+const authUserController = require("../controller/authDistributorController");
 const productController = require("../controller/productController");
 
 distributorRoute.set("view engine", "ejs");
@@ -8,12 +9,15 @@ distributorRoute.set("views", "./views/distributor");
 
 //=================== ADMIN DASH BOARD AND HOME =============//
 
-distributorRoute.get("/", distributorController.loadLogin);
-distributorRoute.get("/", distributorController.loadDashboard);
+distributorRoute.get("/", authUserController.loadLogin);
+distributorRoute.post("/", authUserController.verifyLogin);
+distributorRoute.get("/register", authUserController.loadRegister);
+distributorRoute.post("/register", authUserController.insertDistributor);
+distributorRoute.get("/home", authUserController.loadDashboard);
 
 //=================== ADMIN USERLIST AND BLOCK & UN-BLOCK============= //
 
-distributorRoute.get("/userlist", distributorController.userList)
+distributorRoute.get("/userlist", distributorController.userList);
 
 //====================== ADMIN PRODUCT SECTION ==================== //
 
