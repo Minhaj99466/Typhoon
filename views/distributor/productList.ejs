@@ -1,8 +1,8 @@
-<%- include('../adminLayout/header.ejs') %>
+<%- include('../distributorLayout/header.ejs') %>
 
-  <%- include('../adminLayout/sidebar.ejs') %>
+  <%- include('../distributorLayout/sidebar.ejs') %>
 
-    <%- include('../adminLayout/navbar.ejs') %>
+    <%- include('../distributorLayout/navbar.ejs') %>
 
       <div class="main-panel">
         <div class="content-wrapper">
@@ -39,23 +39,27 @@
                       </thead>
                       <tbody>
 
-                        <% if(product.length> 0){
+                        <%# if(product.length> 0){
                           for(let i = 0;i < product.length;i++ ){ %>
                             <tr>
                               <td>
-                                <%= i+1 %>
+                                1
+                                <!-- <%#= i+1 %> -->
                               </td>
                               <td>
-                                <% for(let j=0;j<1;j++){ %>
-                                  <img style="width:30px" ; height="50px"
-                                    src="/adminAssets/adminImage/<%= product[i].productImage[j] %>" alt="No image">
-                                  <% } %>
+                                <!-- loop -->
+                                <img src="../../public//adminAssets/images/img1687092718763-71c+23A+pcL._SL1500_.jpg" alt="productImage">
+                                <%# for(let j=0;j<1;j++){ %>
+                                  <!-- <img style="width:30px" ; height="50px" -->
+                                    <!-- src="/adminAssets/adminImage/<%#= product[i].productImage[j] %>" alt="No image"> -->
+                                  <%# } %>
                               </td>
 
                               <td>
-                                <%= product[i].productName %>
+                                ProductName
+                                <%#= product[i].productName %>
                               </td>
-                              <% 
+                              <%# 
                                 
                                 const discount =  product[i].discountPercentage; 
         
@@ -67,41 +71,45 @@
 
                                 %>
                                 <td>
-                                  <% if(discountAmount <= 0) {%>
-                                    <%= product[i].price %>
-                                    <% }else{ %>
-                                  <del class="text-danger"><%= product[i].price %></del>
-                                  <%= total %>
-                                  <% } %>
+                                  <%# if(discountAmount <= 0) {%>
+                                    <%#= product[i].price %>
+                                    <%# }else{ %>
+                                  <del class="text-danger"><%#= product[i].price %> 129</del>
+                                  <%#= total %>
+                                  <%# } %>
                                 </td>
                               <td>
-                                <%= product[i].brand %>
+                                Brand
+                                <%#= product[i].brand %>
                               </td>
-                              <td>
-                                <%= product[i].categoryName %>
-                              </td>
+                              <!-- <td>
+                                <%#= product[i].categoryName %>
+                              </td> -->
                              
                               <td>
-                                <%= product[i].quantity %>
+                                quantity 1
+                                <%#= product[i].quantity %>
                               </td>
 
                               <td>
 
-                                <a type="button" class="btn btn-success" href="/admin/editProduct/<%= product[i]._id %>">Edit</a>
-                                <a class="btn btn-dark" href="/admin/deleteProduct?id=<%= product[i]._id %>" onclick="return confirm('Are you sure you want to Delete <%= product[i].productName %>?')">Delete</a>
+                                <a type="button" class="btn btn-success" >Edit</a>
+                                <!-- <a type="button" class="btn btn-success" href="/admin/editProduct/<%#= product[i]._id %>">Edit</a> -->
+                                <!-- <a class="btn btn-dark" href="/admin/deleteProduct?id=<%#= product[i]._id %>" onclick="return confirm('Are you sure you want to Delete <%#= product[i].productName %>?')">Delete</a>
+                                 -->
 
                               </td>
                               <td>
-                                <button type="button" class="btn btn-outline-success btn-sm"  data-bs-toggle="modal" data-bs-target="#offerModal-<%= product[i]._id %>"
+                                <button type="button" class="btn btn-outline-success btn-sm"  data-bs-toggle="modal" data-bs-target="#offerModal-<%#= product[i]._id %>"
                                 data-bs-whatever="@mdo">Add offer</button>
                               </td>
 
                             </tr>
-                            <% } } else{ %>
+                            <%# } } else{ %>
                               <tr>
                                 <td colspan="5">Users not found</td>
                               </tr>
-                              <% } %>
+                              <%# } %>
 
 
 
@@ -120,8 +128,8 @@
 
       
 <!-- product offer section inserting modal section -->
-<% for (let i = 0; i < product.length; i++) { %>
-  <div class="modal fade" id="offerModal-<%= product[i]._id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<%# for (let i = 0; i < product.length; i++) { %>
+  <div class="modal fade" id="offerModal-<%#= product[i]._id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content" style="background-color: #191C24;">
         <div class="modal-header">
@@ -133,17 +141,17 @@
             <div class="mb-3">
               <label for="recipient-name" class="col-form-label">discount Name</label>
               <input type="text" class="form-control" id="recipient-name" name="discountName">
-              <input type="hidden" name="id" value="<%= product[i]._id %>">
+              <input type="hidden" name="id" value="<%#= product[i]._id %>">
             </div>
             <div class="mb-3">
               <label for="recipient-name" class="col-form-label">discount Percentage</label>
               <input type="text" class="form-control" id="recipient-name" name="discountPercentage">
-              <input type="hidden" name="id" value="<%= product[i]._id %>">
+              <input type="hidden" name="id" value="<%#= product[i]._id %>">
             </div>
             <div class="mb-3">
               <label for="recipient-name" class="col-form-label">expiryDate of Offer</label>
-              <input type="date" class="form-control" id="expiry-date-<%= product[i]._id %>" name="expiryDate" onchange="validateExpiryDate('expiry-date-<%= product[i]._id %>')">
-              <input type="hidden" name="id" value="<%= product[i]._id %>">
+              <input type="date" class="form-control" id="expiry-date-<%#= product[i]._id %>" name="expiryDate" onchange="validateExpiryDate('expiry-date-<%#= product[i]._id %>')">
+              <input type="hidden" name="id" value="<%#= product[i]._id %>">
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
@@ -154,7 +162,7 @@
       </div>
     </div>
   </div>
-<% } %>
+<%# } %>
 
 <script>
   function validateExpiryDate(productId) {
@@ -169,4 +177,4 @@
     
   }
 </script>
-      <%- include('../adminLayout/footer.ejs') %>
+      <%- include('../distributorLayout/footer.ejs') %>

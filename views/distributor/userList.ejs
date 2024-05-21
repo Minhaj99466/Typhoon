@@ -1,8 +1,8 @@
-<%- include('../adminLayout/header.ejs') %>
+<%- include('../distributorLayout/header.ejs') %>
 
-  <%- include('../adminLayout/sidebar.ejs') %>
+  <%- include('../distributorLayout/sidebar.ejs') %>
 
-    <%- include('../adminLayout/navbar.ejs') %>
+    <%- include('../distributorLayout/navbar.ejs') %>
 
       <div class="main-panel">
         <div class="content-wrapper">
@@ -26,37 +26,41 @@
                       </thead>
                       <tbody>
 
-                        <% if(user.length> 0){
+                        <%# if(user.length> 0){
                           for(let i = 0;i < user.length;i++ ){ %>
                             <tr>
                               <td>
-                                <%= i+1 %>
+                                <%#= i+1 %>
+                                1
                               </td>
                               <td>
-                                <%= user[i].name %>
+                                <%#= user[i].name %>
+                                Name
                               </td>
                               <td>
-                                <%= user[i].mobile %>
+                                <%#= user[i].mobile %>
+                                988979789
                               </td>
                               <td>
-                                <%= user[i].email %>
+                                <%#= user[i].email %>
+                                minhaj@99466@gmail.com
                               </td>
                               <td>
 
-                       <% if(user[i].is_block===true){ %>
-                                  <a href="/admin/unblock-user?id=<%= user[i]._id %>"
+                       <%# if(user[i].is_block===true){ %>
+                                  <a href="/admin/unblock-user?id=<%#= user[i]._id %>"
                                     class="btn btn-success">UnBlock</a>
-                                  <% }else{ %>
-                                    <a href="/admin/block-user?id=<%= user[i]._id %> " onclick="return confirm('Are you sure you need to block  <%= user[i].name %>?')"  class="btn btn-danger">Block</a>
-                                    <% } %>
+                                  <%# }else{ %>
+                                    <a href="/admin/block-user?id=<%#= user[i]._id %> " onclick="return confirm('Are you sure you need to block  <%#= user[i].name %>?')"  class="btn btn-danger">Block</a>
+                                    <%# } %>
 
                                   </td>
                             </tr>
-                            <% } } else{ %>
+                            <%# } } else{ %>
                               <tr>
                                 <td colspan="5">Users not found</td>
                               </tr>
-                              <% } %>
+                              <%# } %>
 
 
                       </tbody>
@@ -73,4 +77,4 @@
 
 
 
-      <%- include('../adminLayout/footer.ejs') %>
+      <%- include('../distributorLayout/footer.ejs') %>
