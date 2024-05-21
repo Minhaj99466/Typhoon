@@ -1,6 +1,7 @@
 const express = require("express");
 const adminRoute = express();
 const adminController = require("../controller/adminController");
+const auth = require('../middleware/adminAuth')
 // const productController = require("../controller/productController");
 
 
@@ -9,20 +10,17 @@ adminRoute.set("views", "./views/admin");
 
 //=================== ADMIN DASH BOARD AND HOME =============//
 
-adminRoute.get("/", adminController.loadLogin);
-adminRoute.get("/home", adminController.loadDashboard);
+adminRoute.get("/",auth.adminIsLogout,adminController.loadLogin);
+adminRoute.post('/', adminController.verifyLogin)
+adminRoute.get("/dashboard", auth.adminIsLogin,adminController.loadDashboard);
+adminRoute.get("/logout",adminController.adminLogout)
 
 //=================== ADMIN USERLIST AND BLOCK & UN-BLOCK============= //
 
-adminRoute.get("/userlist", adminController.userList);
+adminRoute.get("/userlist",auth.adminIsLogin,adminController.userList);
+adminRoute.get("/blockuser/:id",adminController.userBlock)
+adminRoute.get('/unblockuser/:id',adminController.userUnblock)
 
-
-//====================== ADMIN PRODUCT SECTION ==================== //
-
-// adminRoute.get("/productList", productController.loadProduct);
-// adminRoute.get("/addProduct", productController.addProduct);
-
-//======================= ADMIN ORDER SECTION ==================== //
 
 
 adminRoute.get("*", function (req, res) {

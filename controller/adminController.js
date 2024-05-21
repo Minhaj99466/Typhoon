@@ -1,3 +1,6 @@
+const utils = require("../utils/securepassword");
+const userModel = require("../model/userModel");
+
 //============== LOGIN PAGE LOAD ===============//
 
 const loadLogin = async (req, res, next) => {
@@ -5,6 +8,42 @@ const loadLogin = async (req, res, next) => {
     res.render("login");
   } catch (error) {
     next(error);
+  }
+};
+
+const verifyLogin = async (req, res, next) => {
+  try {
+    const { email, password } = req.body;
+    const userData = await userModel.findOne(
+      { email: email },
+      { email: 1, password: 1, is_admin: 1 }
+    );
+    if (!userData) {
+      return res.render("login", { message: "email in incorrect" });
+    }
+    const passwordMatch = await utils.comparePassword(
+      password,
+      userData.password
+    );
+    if (!passwordMatch) {
+      return res.render("login", { message: "password is incorrect" });
+    }
+    if (!userData.is_admin === 0) {
+      res.render("login", { message: "this user is not an admin" });
+    }
+    req.session.admin_id = userData._id;
+    res.redirect("/admin/dashboard");
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const adminLogout = async (req, res, next) => {
+  try {
+    req.session.destroy();
+    res.redirect("/admin");
+  } catch (err) {
+    console.log(err);
   }
 };
 
@@ -18,20 +57,34 @@ const loadDashboard = async (req, res, next) => {
   }
 };
 
-
-
 //===================== USER LIST =======================//
 
 const userList = async (req, res, next) => {
   try {
-    res.render("userList");
+    const userData = await userModel.find({ is_admin: 0 });
+    res.render("userList", { userData });
   } catch (error) {
     next(error);
   }
 };
 
+const userBlock = async (req, res, next) => {
+  try {
+    await userModel.updateOne({_id:req.params.id},{ $set: { is_block: true } });
+    return res.redirect("/admin/userlist");
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-
+const userUnblock = async (req,res,next) => {
+  try{
+    await userModel.updateOne({_id:req.params.id},{$set:{is_block: false}})
+    return res.redirect("/admin/userlist")
+  }catch(err){
+    console.log(err)
+  }
+}
 
 const loadSalesReport = async (req, res, next) => {
   try {
@@ -41,12 +94,13 @@ const loadSalesReport = async (req, res, next) => {
   }
 };
 
-
-
-
 module.exports = {
   loadLogin,
+  verifyLogin,
   loadDashboard,
+  adminLogout,
+  userBlock,
+  userUnblock,
   userList,
   loadSalesReport,
 };
