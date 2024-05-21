@@ -14,7 +14,7 @@
                 <div class="card-body">
 
                   <div class="text-right mb-3">
-                    <a type="button"  class="btn btn-success " href="/admin/addProduct">addProduct</a>
+                    <a type="button"  class="btn btn-success " href="/distributor/addProduct">addProduct</a>
                   </div>
                   
                   <div class="table-responsive">
@@ -48,10 +48,10 @@
                               </td>
                               <td>
                                 <!-- loop -->
-                                <img src="../../public//adminAssets/images/img1687092718763-71c+23A+pcL._SL1500_.jpg" alt="productImage">
+                                <img src="../../public//distributorAssets/images/img1687092718763-71c+23A+pcL._SL1500_.jpg" alt="productImage">
                                 <%# for(let j=0;j<1;j++){ %>
                                   <!-- <img style="width:30px" ; height="50px" -->
-                                    <!-- src="/adminAssets/adminImage/<%#= product[i].productImage[j] %>" alt="No image"> -->
+                                    <!-- src="/distributorAssets/distributorImage/<%#= product[i].productImage[j] %>" alt="No image"> -->
                                   <%# } %>
                               </td>
 
@@ -94,8 +94,8 @@
                               <td>
 
                                 <a type="button" class="btn btn-success" >Edit</a>
-                                <!-- <a type="button" class="btn btn-success" href="/admin/editProduct/<%#= product[i]._id %>">Edit</a> -->
-                                <!-- <a class="btn btn-dark" href="/admin/deleteProduct?id=<%#= product[i]._id %>" onclick="return confirm('Are you sure you want to Delete <%#= product[i].productName %>?')">Delete</a>
+                                <!-- <a type="button" class="btn btn-success" href="/distributor/editProduct/<%#= product[i]._id %>">Edit</a> -->
+                                <!-- <a class="btn btn-dark" href="/distributor/deleteProduct?id=<%#= product[i]._id %>" onclick="return confirm('Are you sure you want to Delete <%#= product[i].productName %>?')">Delete</a>
                                  -->
 
                               </td>
@@ -137,7 +137,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="/admin/addOffer" method="post">
+          <form action="/distributor/addOffer" method="post">
             <div class="mb-3">
               <label for="recipient-name" class="col-form-label">discount Name</label>
               <input type="text" class="form-control" id="recipient-name" name="discountName">
