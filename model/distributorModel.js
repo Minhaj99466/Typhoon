@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
 const userSChema = new mongoose.Schema({
-  username: {
+  distributer_name: {
     type: String,
     required: true,
   },
-  adharnumber: {
+  licence_number: {
     type: Number,
     required: true,
   },
@@ -21,10 +21,6 @@ const userSChema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  is_admin: {
-    type: Number,
-    required: true,
-  },
   is_block: {
     type: Boolean,
     default: false,
@@ -35,6 +31,6 @@ const userSChema = new mongoose.Schema({
   },
 });
 
-const User = mongoose.model("User", userSChema);
+const distributor = mongoose.model("distributor", userSChema);
 
-module.exports = User;
+module.exports = distributor;
