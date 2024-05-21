@@ -112,8 +112,13 @@
                                     <a class="dropdown-toggle hvr-float-shadow active waves-effect waves-light"
                                         data-toggle="dropdown" href="javascript:;"><i class="fa fa-ellipsis-v"></i></a>
                                     <ul class="dropdown-menu tc_menu_fixed_border">
-                                        <li class="dropdown_hover"><a href="register">Register</a></li>
-                                        <li class="dropdown_hover"><a href="login">Login</a></li>
+                                       
+                                        <% if(session == null){ %>
+                                            <li class="dropdown_hover"><a href="/register">Register</a></li>
+                                            <li class="dropdown_hover"><a href="/login">Login</a></li>
+                                         <% }else{ %>
+                                             <li><a href="/logout"><i class="icon-user">logout</a></i>
+                                         <% } %>
                                         <li class="dropdown_hover hidden-lg"><a href="javascript:;">Free Quote</a></li>
                                     </ul>
                                 </li>

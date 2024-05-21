@@ -1,21 +1,35 @@
 const express = require("express");
-const app = express();
 const path = require("path");
 const nocache = require("nocache");
-const morgan = require("morgan");
+const mongoose = require('mongoose')
+const session = require('express-session')
+
+
+const app = express();
+
+app.set('view engine', 'ejs');
+
+mongoose.connect("mongodb://localhost:27017/typhoon")
 
 const publicPath = path.join(__dirname, "public");
-app.use(nocache());
 app.use(express.static(publicPath));
-app.use(morgan("tiny"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// USER ROUTE //
+app.use(session({
+  secret: 'ambjhhhiyjba4467689havfa',
+  resave: false,
+  saveUninitialized: true
+}));
 
+app.use(nocache());
+
+// USER ROUTE //
 const userRoute = require("./routes/userRoute");
 app.use("/", userRoute);
 
-app.listen(3000, (req, res) => {
-  console.log(`server is loading 3000,tyfooon `);
+
+
+app.listen(3000, () => {
+  console.log("server is running 3000");
 });

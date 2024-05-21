@@ -1,9 +1,11 @@
+const securePassword = require("../utils/securepassword");
+const userModel = require("../model/userModel");
 
 //============================  HOME PAGE LOAD ========================//
 
 const loadHome = async (req, res, next) => {
   try {
-    res.render('home')
+    res.render("home", { session: req.session });
   } catch (error) {
     next(error);
   }
@@ -26,6 +28,43 @@ const loadRegister = async (req, res, next) => {
     res.render("register");
   } catch {
     next(error);
+  }
+};
+
+const insertUser = async (req, res, next) => {
+  try {
+    const spassword = await securePassword(req.body.password);
+    const existingUser = await userModel.exists({ email: req.body.email });
+    if (existingUser) {
+      return res.render("register", { message: "Email is already registered" });
+    }
+
+    const user = new userModel({
+      username: req.body.username,
+      adharnumber: req.body.adharnumber,
+      phonenumber: req.body.phonenumber,
+      email: req.body.email,
+      password: spassword,
+      is_admin: 0,
+    });
+    const userData = await user.save();
+    if (userData) {
+      const userVerification = await userModel.findOneAndUpdate(
+        { email: req.body.email },
+        { $set: { is_verified: true } }
+      );
+      req.session.user_id = userVerification._id;
+      if (userVerification) {
+        console.log(userVerification);
+        res.redirect("/home");
+      }
+    } else {
+      return res.render("register", {
+        message: "Your registration has failed",
+      });
+    }
+  } catch (err) {
+    console.log(err);
   }
 };
 
@@ -110,4 +149,5 @@ module.exports = {
   loadRegister,
   loadService,
   loadShop,
+  insertUser,
 };
