@@ -1,12 +1,13 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const path = require("path");
 const nocache = require("nocache");
-const mongoose = require("mongoose");
 const session = require("express-session");
 
 const app = express();
 
-mongoose.connect("mongodb://localhost:27017/typhoon");
+mongoose.connect("mongodb://127.0.0.1:27017/typhoon");
+
 
 const publicPath = path.join(__dirname, "public");
 app.use(express.static(publicPath));
