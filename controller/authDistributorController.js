@@ -97,7 +97,7 @@ const verifyLogin = async (req, res, next) => {
       return res.render("login", { message: "User is blocked." });
     }
     req.session.distributer_id = distributerData._id;
-    return res.redirect("/home");
+    return res.redirect("/distributor/home");
   } catch (error) {
     console.error(error);
   }

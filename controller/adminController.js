@@ -1,5 +1,7 @@
 const utils = require("../utils/securepassword");
 const userModel = require("../model/userModel");
+const distributerModel = require("../model/distributorModel");
+
 
 //============== LOGIN PAGE LOAD ===============//
 
@@ -86,13 +88,32 @@ const userUnblock = async (req,res,next) => {
   }
 }
 
-const loadSalesReport = async (req, res, next) => {
-  try {
-    res.render("salesReport");
-  } catch (error) {
-    next(error);
+const distributerList = async(req,res,next) =>{
+  try{
+    const distributerData = await distributerModel.find({ is_verified: true});
+    res.render("distributerList", { distributerData });
+  }catch(err){
+    console.log(err)
   }
-};
+}
+
+const distributerBlock = async(req,res,next) =>{
+  try{
+    await distributerModel.updateOne({_id:req.params.id},{ $set: { is_block: true } });
+    return res.redirect("/admin/distributerlist");
+  }catch(err){
+    console.log(err)
+  }
+}
+
+const distributerUnblock = async(req,res,next) =>{
+  try{
+    await distributerModel.updateOne({_id:req.params.id},{$set:{is_block: false}})
+    return res.redirect("/admin/distributerlist")
+  }catch(err){
+    console.log(err)
+  }
+}
 
 module.exports = {
   loadLogin,
@@ -102,5 +123,7 @@ module.exports = {
   userBlock,
   userUnblock,
   userList,
-  loadSalesReport,
+  distributerList,
+  distributerBlock,
+  distributerUnblock,
 };

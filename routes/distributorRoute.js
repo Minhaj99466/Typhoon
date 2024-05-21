@@ -3,18 +3,19 @@ const distributorRoute = express();
 const distributorController = require("../controller/distributorController");
 const authUserController = require("../controller/authDistributorController");
 const productController = require("../controller/productController");
+const auth = require("../middleware/distributerAuth")
 
 distributorRoute.set("view engine", "ejs");
 distributorRoute.set("views", "./views/distributor");
 
 //=================== ADMIN DASH BOARD AND HOME =============//
 
-distributorRoute.get("/", authUserController.loadLogin);
+distributorRoute.get("/", auth.distributerLogout,authUserController.loadLogin);
 distributorRoute.post("/", authUserController.verifyLogin);
-distributorRoute.get("/register", authUserController.loadRegister);
+distributorRoute.get("/register", auth.distributerLogin,authUserController.loadRegister);
 distributorRoute.post("/register", authUserController.insertDistributor);
-distributorRoute.get("/home", authUserController.loadDashboard);
-distributorRoute.get("/logout", authUserController.distrubuterLogout);
+distributorRoute.get("/home", auth.distributerLogin,authUserController.loadDashboard);
+distributorRoute.get("/logout", auth.distributerLogin,authUserController.distrubuterLogout);
 
 //=================== ADMIN USERLIST AND BLOCK & UN-BLOCK============= //
 
