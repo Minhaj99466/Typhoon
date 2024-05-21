@@ -31,7 +31,7 @@ const insertDistributor = async (req, res, next) => {
       return res.render("register", { message: "Email is already registered" });
     }
     const securePassword = await utils.securePassword(password);
-    const newDistributer = new userModel({
+    const newDistributer = new distributerModel({
       distributer_name,
       licence_number,
       phonenumber,
@@ -55,7 +55,7 @@ const insertDistributor = async (req, res, next) => {
       });
     }
     req.session.distributer_id = distributerVerification._id;
-    res.redirect("/home");
+    res.redirect("/distributor/home");
   } catch (err) {
     console.log(err);
   }
@@ -103,10 +103,20 @@ const verifyLogin = async (req, res, next) => {
   }
 };
 
+const distrubuterLogout = async (req,res,next) =>{
+    try{
+        req.session.destroy();
+        res.redirect("/distributor");
+    }catch(err){
+        console.log(err)
+    }
+}
+
 module.exports = {
   loadDashboard,
   insertDistributor,
   verifyLogin,
   loadRegister,
+  distrubuterLogout,
   loadLogin,
 };

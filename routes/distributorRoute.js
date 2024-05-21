@@ -14,6 +14,7 @@ distributorRoute.post("/", authUserController.verifyLogin);
 distributorRoute.get("/register", authUserController.loadRegister);
 distributorRoute.post("/register", authUserController.insertDistributor);
 distributorRoute.get("/home", authUserController.loadDashboard);
+distributorRoute.get("/logout", authUserController.distrubuterLogout);
 
 //=================== ADMIN USERLIST AND BLOCK & UN-BLOCK============= //
 
