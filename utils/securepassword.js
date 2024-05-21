@@ -10,7 +10,7 @@ const securePassword = async (password) => {
 
 const comparePassword = async (dbPassword, haspassword) => {
   try {
-    await bcrypt.compare(req.body.password, userData.password);
+    return await bcrypt.compare(dbPassword, haspassword);
   } catch (err) {
     console.log(err);
   }
