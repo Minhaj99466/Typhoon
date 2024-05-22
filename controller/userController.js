@@ -4,7 +4,7 @@
 
 const loadCart = async (req, res, next) => {
   try {
-    res.render("cart");
+    res.render("cart", { session: req.session.user_id });
   } catch {
     next(error);
   }
@@ -14,7 +14,7 @@ const loadCart = async (req, res, next) => {
 
 const loadAbout = async (req, res, next) => {
   try {
-    res.render("about_us");
+    res.render("about_us", { session: req.session.user_id });
   } catch {
     next(error);
   }
@@ -24,7 +24,7 @@ const loadAbout = async (req, res, next) => {
 
 const loadCheckOut = async (req, res, next) => {
   try {
-    res.render("checkout");
+    res.render("checkout", { session: req.session.user_id });
   } catch {
     next(error);
   }
@@ -34,7 +34,7 @@ const loadCheckOut = async (req, res, next) => {
 
 const loadContactUs = async (req, res, next) => {
   try {
-    res.render("contact_us");
+    res.render("contact_us", { session: req.session.user_id });
   } catch {
     next(error);
   }
@@ -44,7 +44,7 @@ const loadContactUs = async (req, res, next) => {
 
 const loadError = async (req, res, next) => {
   try {
-    res.render("error");
+    res.render("error", { session: req.session.user_id });
   } catch {
     next(error);
   }
@@ -54,7 +54,7 @@ const loadError = async (req, res, next) => {
 
 const loadService = async (req, res, next) => {
   try {
-    res.render("services");
+    res.render("services", { session: req.session.user_id });
   } catch {
     next(error);
   }
@@ -69,6 +69,15 @@ const loadShop = async (req, res, next) => {
     next(error);
   }
 };
+//=============================   SinglePRODUCT PAGE LOAD  ========================//
+
+const loadSingle = async (req, res, next) => {
+  try {
+    res.render("singleshop", { session: req.session.user_id });
+  } catch {
+    next(error);
+  }
+};
 
 module.exports = {
   loadCart,
@@ -78,4 +87,5 @@ module.exports = {
   loadError,
   loadService,
   loadShop,
+  loadSingle
 };
