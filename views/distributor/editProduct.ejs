@@ -14,7 +14,7 @@
                             <div class="card-body">
                               <h4 class="card-title">EDIT PRODUCT</h4>
                               
-                              <form class="form-sample" action="/admin/editProduct" method="post" enctype="multipart/form-data" >
+                              <form class="form-sample" action="/distributor/editProduct" method="post" enctype="multipart/form-data" >
                                 
                                 <div class="row">
                                   <div class="col-md-6">
@@ -104,7 +104,7 @@
                                         
                                         <div class="input-group col-xs-12">
                                           <% products.productImage.forEach((x,index) => { %>
-                                            <img src="/adminAssets/adminImage/<%= x %>" alt="" width="60px" height="50">
+                                            <img src="/distributorAssets/distributorImage/<%= x %>" alt="" width="60px" height="50">
                                           <% }) %>
                                         </div>
                                       </div>
@@ -141,7 +141,7 @@
                                   </div>
                                 </div><br>
                                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                                     <a type="button" class="btn btn-dark" href="/admin/productList">Cancel</a>
+                                     <a type="button" class="btn btn-dark" href="/distributor/productlist">Cancel</a>
                               </form>
                             </div>
                           </div>
@@ -161,7 +161,7 @@
                         </div>
         
                         <!-- form starts -->
-                        <form action="/admin/editProduct/updateimage/<%- products._id  %>" method="post"
+                        <form action="/distributor/editProduct/updateimage/<%- products._id  %>" method="post"
                           enctype="multipart/form-data">
                           <div class="modal-body">
         
@@ -169,9 +169,9 @@
                             <br>
                             <% products.productImage.forEach((x,index)=> { %>
         
-                              <img class="mb-3" src="/adminAssets/adminImage/<%= x %>" alt="" width="60px" height="50">
+                              <img class="mb-3" src="/distributorAssets/distributorImage/<%= x %>" alt="" width="60px" height="50">
                               <!-- dlete button -->
-                              <a href="/admin/deleteimg/<%= x %>/<%= products._id%>">
+                              <a href="/distributor/deleteimg/<%= x %>/<%= products._id%>">
                                 <button type="button" class="btn btn-danger mb-4" data-bs-dismiss="modal">delete</button>
                               </a>
         

@@ -18,7 +18,7 @@ distributorRoute.get("/home", auth.distributerLogin,authUserController.loadDashb
 distributorRoute.get("/logout", auth.distributerLogin,authUserController.distrubuterLogout);
 
 //====================== ADMIN PRODUCT SECTION ==================== //
-distributorRoute.get("/productList", auth.distributerLogin,productController.loadProduct);
+distributorRoute.get("/productlist", auth.distributerLogin,productController.loadProduct);
 distributorRoute.post("/productlist",update.upload.array("image",10),productController.insertProduct);
 distributorRoute.get("/deleteproduct/:id",productController.removeProduct)
 

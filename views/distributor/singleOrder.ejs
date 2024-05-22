@@ -49,7 +49,7 @@
                               <figure class="product-media">
                                   <a >
                                       
-                                  <img src="/adminAssets/adminImage/<%= order.productId.productImage[0]%>" alt="Product image">
+                                  <img src="/distributorAssets/distributorImage/<%= order.productId.productImage[0]%>" alt="Product image">
                                      
                                   </a>
                               </figure>
@@ -87,7 +87,7 @@
   
   <div class="modal fade" id="returnReasonmodal-<%= order._id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <form action="/admin/returnOrderApproval" method="post">
+        <form action="/distributor/returnOrderApproval" method="post">
             <input type="hidden" value="<%= order._id %>" name="orderid">
             <input type="hidden" value="<%= orders._id %>" name="ordersid">
             <input type="hidden" value="<%= orders.userId%>" name="userId">
@@ -158,7 +158,7 @@
     function updateStatus(status, id ,userId) {
   
       $.ajax({
-        url: '/admin/updateStatus',
+        url: '/distributor/updateStatus',
         method: 'post',
         data: { 
           status: status.innerText,

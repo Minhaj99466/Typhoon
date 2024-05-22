@@ -6,7 +6,7 @@ const distributerSChema = new mongoose.Schema({
     required: true,
   },
   licence_number: {
-    type: Number,
+    type: String,
     required: true,
   },
   phonenumber: {

@@ -27,6 +27,8 @@
   <link rel="stylesheet" type="text/css" href="/userAssets/css/camera.css" />
   <link rel="stylesheet" type="text/css" href="/userAssets/css/style_2.css" />
   <link rel="stylesheet" type="text/css" href="/userAssets/css/responsive_2.css" />
+  <link rel="stylesheet" type="text/css" href="/userAssets/css/form.css" />
+  
   <!-- favicon link-->
   <link rel="shortcut icon" type="image/icon" href="/userAssets/images/favicon.png" />
 </head>
@@ -63,22 +65,24 @@
 
                 </div>
                 <div class="row">
-                  <form action="/distributor" method="post">
+                  <form action="/distributor" method="post" id="form">
                     <div class="cont_main_section">
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="contect_form1">
-                          <input type="email" name="email" placeholder="Email*" class="require" />
+                          <input type="email" id="email" name="email" placeholder="Email*" class="require" />
+                          <span id="email_error" class="error"></span>
                         </div>
                       </div>
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="contect_form1">
-                          <input type="password" name="password" placeholder="Password*" class="require"
+                          <input type="password" id="password" name="password" placeholder="Password*" class="require"
                             data-valid="email" data-error="Email should be valid." />
+                            <span id="pass_error" class="error"></span>
                         </div>
                       </div>
                       <% if(typeof message !=='undefined' ){ %>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                          <p class="Danger" role="alert">
+                          <p class="error" role="alert" style="color: red !important;">
                             <%= message %>
                           </p>
                         </div>
@@ -122,6 +126,7 @@
   <script src="/userAssets/js/owl.carousel.js"></script>
   <script src="/userAssets/js/camera.min.js"></script>
   <script src="/userAssets/js/custom_2.js"></script>
+  <script src="/distributorAssets/js/validation/distributorLogin.js"></script>
 
   <!--js code-->
 </body>
