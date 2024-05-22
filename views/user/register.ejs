@@ -48,10 +48,6 @@
                 <div class="sw_left_heading_wraper sw_dark_heading_wraper">
                   <h1>Register</h1>
                   <img src="/userAssets/images/heading_line.png" alt="title" />
-                  <p>
-                    Donec quis magna sit amet risus vulputate maximus eget
-                    eget arcu. Praesent sed molestie tortor.
-                  </p>
                 </div>
                 <div class="row">
                   <form action="/register" id="form" method="post">
@@ -90,7 +86,7 @@
                       </div>
                       <% if(typeof message !=='undefined' ){ %>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                          <p class="Danger" role="alert">
+                          <p class="error" role="alert" style="color: red !important;" >
                             <%= message %>
                           </p>
                         </div>

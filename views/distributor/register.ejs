@@ -31,14 +31,27 @@
   <!-- favicon link-->
   <link rel="shortcut icon" type="image/icon" href="/userAssets/images/favicon.png" />
 </head>
+<style>
 
+  .require{
+    border: 1px solid green !important;
+    background-color: rgb(235, 237, 232) !important;
+  }
+  .form-btn{
+    background-color:green !important ;
+  }
+  input[placeholder], [placeholder], *[placeholder] {
+    color: rgb(0, 0, 0) !important;
+}
+
+</style>
 <body>
   <div class="login_main_wrapper res_main_wrapper">
     <div class="container-fluid p-0">
       <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 col-12">
           <div class="image-wrap">
-            <img src="/userAssets/images/form-image.gif" alt="img" />
+            <img src="/userAssets/images/solar2.jpg" alt="img" />
           </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 col-12">
@@ -46,12 +59,8 @@
             <div class="contact_right_wrapper">
               <div class="cmnt_area_div_mn">
                 <div class="sw_left_heading_wraper sw_dark_heading_wraper">
-                  <h1>Distributor Register</h1>
+                  <h1 style="color: green !important; ">Distributor Register</h1>
                   <img src="/userAssets/images/heading_line.png" alt="title" />
-                  <p>
-                    Donec quis magna sit amet risus vulputate maximus eget
-                    eget arcu. Praesent sed molestie tortor.
-                  </p>
                 </div>
                 <div class="row">
                   <form action="/distributor/register" id="form" method="post">

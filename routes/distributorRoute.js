@@ -12,7 +12,7 @@ distributorRoute.set("views", "./views/distributor");
 //=================== ADMIN DASH BOARD AND HOME =============//
 distributorRoute.get("/", auth.distributerLogout,authUserController.loadLogin);
 distributorRoute.post("/", authUserController.verifyLogin);
-distributorRoute.get("/register", auth.distributerLogin,authUserController.loadRegister);
+distributorRoute.get("/register", auth.distributerLogout,authUserController.loadRegister);
 distributorRoute.post("/register", authUserController.insertDistributor);
 distributorRoute.get("/home", auth.distributerLogin,authUserController.loadDashboard);
 distributorRoute.get("/logout", auth.distributerLogin,authUserController.distrubuterLogout);
