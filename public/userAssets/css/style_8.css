@@ -7170,3 +7170,8 @@ nav ul li:nth-child(12) > ul {
     height: 100%;
 }
 
+.table-shop{
+    display: flex;
+    justify-content: center;
+    background-color: #0091dc;
+}
