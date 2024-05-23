@@ -32,7 +32,7 @@ const verifyLogin = async (req, res, next) => {
       return res.render("login", { message: "password is incorrect" });
     }
     if (!userData.is_admin === 0) {
-      res.render("login", { message: "this user is not an admin" });
+      return res.render("login", { message: "this user is not an admin" });
     }
     req.session.admin_id = userData._id;
     res.redirect("/admin/dashboard");
