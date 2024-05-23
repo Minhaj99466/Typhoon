@@ -18,7 +18,7 @@ const verifyLogin = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const userData = await userModel.findOne(
-      { email: email },
+      { email },
       { email: 1, password: 1, is_admin: 1 }
     );
     if (!userData) {
@@ -31,7 +31,7 @@ const verifyLogin = async (req, res, next) => {
     if (!passwordMatch) {
       return res.render("login", { message: "password is incorrect" });
     }
-    if (!userData.is_admin === 0) {
+    if (userData.is_admin === 0) {
       return res.render("login", { message: "this user is not an admin" });
     }
     req.session.admin_id = userData._id;
