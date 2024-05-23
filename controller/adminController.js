@@ -118,7 +118,7 @@ const distributerUnblock = async(req,res,next) =>{
 
 const loadProductApprovePage = async (req,res) =>{
   try{
-    const productData = await productModel.find({action:"pendding"}).populate("distributor_id")
+    const productData = await productModel.find({action:"pendding",is_delete:false}).populate("distributor_id")
     res.render("productApprove",{productData})
   }catch(err){
     console.log(err)

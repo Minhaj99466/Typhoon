@@ -37,6 +37,10 @@ const productSchema = new mongoose.Schema({
   reason: {
     type: String,
   },
+  is_delete:{
+    type: Boolean,
+    default: false,
+  },
   distributor_id: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "distributor",
