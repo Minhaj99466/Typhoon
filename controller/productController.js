@@ -3,7 +3,7 @@ const productModel = require("../model/productModal");
 //===================== LOAD PRODUCT =======================//
 const loadProduct = async (req, res, next) => {
   try {
-    const productData = await productModel.find()
+    const productData = await productModel.find({is_delete:false})
     res.render("productList",{productData});
   } catch (error) {
     next(error);
@@ -53,7 +53,8 @@ const insertProduct = async (req, res, next) => {
 
 const removeProduct = async (req,res) =>{
   try{
-    console.log(req.params.id);
+    await productModel.updateOne({_id:req.params.id},{$set:{is_delete:true}});
+    res.redirect('/distributor/productlist');
   }catch(err){
     console.log(err)
   }

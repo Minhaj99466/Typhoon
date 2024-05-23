@@ -1,4 +1,4 @@
-
+const productModel = require("../model/productModal");
 
 //=============================   CART PAGE LOAD  ========================//
 
@@ -64,7 +64,8 @@ const loadService = async (req, res, next) => {
 
 const loadShop = async (req, res, next) => {
   try {
-    res.render("shop_sidebar",{ session: req.session.user_id });
+    const productData = await productModel.find({action:"approve",is_delete:false})
+    res.render("shop_sidebar",{ session: req.session.user_id, productData });
   } catch {
     next(error);
   }
