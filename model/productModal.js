@@ -30,13 +30,12 @@ const productSchema = new mongoose.Schema({
     required: true,
   },
   image: [{ type: String }],
-  isApprove: {
-    type: Boolean,
-    default: false,
+  action: {
+    type: String,
+    default: "pendding",
   },
-  isReject: {
-    type: Boolean,
-    default: false,
+  reason: {
+    type: String,
   },
   distributor_id: {
     type: mongoose.Schema.Types.ObjectId,

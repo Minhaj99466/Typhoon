@@ -21,6 +21,9 @@ adminRoute.get('/distributerlist',auth.adminIsLogin,adminController.distributerL
 adminRoute.get("/blockdistributer/:id",adminController.distributerBlock)
 adminRoute.get('/unblockdistributer/:id',adminController.distributerUnblock)
 
+adminRoute.get("/productapprove",adminController.loadProductApprovePage)
+adminRoute.get("/productdetails/:id",adminController.productDetails)
+adminRoute.post('/product/approval',adminController.productApproval)
 
 adminRoute.get("*", function (req, res) {
   res.redirect("/admin");

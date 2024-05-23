@@ -1,0 +1,100 @@
+<%- include('../adminLayout/header.ejs') %>
+<%- include('../adminLayout/sidebar.ejs') %>
+<%- include('../adminLayout/navbar.ejs') %>
+<div class="main-panel">
+   <div class="content-wrapper">
+      <div class="col">
+         <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+               <div class="card-body">
+                  <h4 class="card-title">Product Details</h4>
+                  <div class="row">
+                     <div class="col-md-6">
+                        <img style="height: 250px;"
+                           src="/distributorAssets/distributorImage/<%= productData.image[0] %>"
+                           class="img-fluid" alt="Product Image">
+                     </div>
+                     <div class="col-md-6">
+                        <p>Product Name: <%= productData.productName %>
+                        </p>
+                        <p>Description: <%= productData.description %>
+                        </p>
+                        <p>Price: <%= productData.price %>
+                        </p>
+                        <p>Model Number: <%= productData.modelNumber %>
+                        </p>
+                        <p>Brand: <%= productData.brand %>
+                        </p>
+                        <p>Warranty: <%= productData.warranty %> year</p>
+                     </div>
+                  </div>
+                  <hr>
+                  <h4 class="card-title">Distributor Details</h4>
+                  <div class="row">
+                     <div class="col-md-6">
+                        <p>Name: <%= productData.distributor_id.distributer_name %>
+                        </p>
+                        <p>Licence Number: <%= productData.distributor_id.licence_number %>
+                        </p>
+                        <p>Phone: <%= productData.distributor_id.phonenumber %>
+                        </p>
+                        <p>Email: <%= productData.distributor_id.email %>
+                        </p>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label for="approvalReason">Reason for Approval/Rejection</label>
+                           <textarea class="form-control" id="approvalReason" rows="3"></textarea>
+                        </div>
+                        <button type="button" id="approveButton"
+                           class="btn btn-success">Approve</button>
+                        <button type="button" id="rejectButton"
+                           class="btn btn-danger">Reject</button>
+                     </div>
+                  </div>
+                  <div class="notification-container"></div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<%- include('../adminLayout/footer.ejs') %>
+<script>
+   document.getElementById('approveButton').addEventListener('click', function () {
+       sendApprovalRequest('approve');
+   });
+   
+   document.getElementById('rejectButton').addEventListener('click', function () {
+       sendApprovalRequest('reject');
+   });
+   
+   function sendApprovalRequest(action) {
+       const reason = document.getElementById('approvalReason').value;
+       const productId = '<%= productData._id %>'; // assuming _id is the unique identifier for the product
+   
+       fetch('/admin/product/approval', {
+           method: 'POST',
+           headers: {
+               'Content-Type': 'application/json'
+           },
+           body: JSON.stringify({
+               action: action,
+               reason: reason,
+               productId: productId
+           })
+       })
+           .then(response => response.json())
+           .then(data => {
+               if (data.success) {
+                   window.location.href = '/admin/productapprove';
+               } else {
+                   alert(`Failed to ${action} the product.`);
+               }
+           })
+           .catch(error => {
+               console.error('Error:', error);
+               alert('An error occurred. Please try again.');
+           });
+   }
+</script>

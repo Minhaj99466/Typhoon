@@ -1,6 +1,7 @@
 const utils = require("../utils/securepassword");
 const userModel = require("../model/userModel");
 const distributerModel = require("../model/distributorModel");
+const productModel = require("../model/productModal")
 
 
 //============== LOGIN PAGE LOAD ===============//
@@ -115,6 +116,39 @@ const distributerUnblock = async(req,res,next) =>{
   }
 }
 
+const loadProductApprovePage = async (req,res) =>{
+  try{
+    const productData = await productModel.find({action:"pendding"}).populate("distributor_id")
+    res.render("productApprove",{productData})
+  }catch(err){
+    console.log(err)
+  }
+}
+
+const productDetails = async (req,res) =>{
+  try{
+    const productData = await productModel.findOne({_id:req.params.id}).populate("distributor_id")
+    res.render("productDetails",{productData})
+  }catch(err){
+    console.log(err)
+  }
+}
+
+
+const productApproval = async (req,res) =>{
+  try{
+    const { action, reason, productId } = req.body;
+    const updateData = await productModel.updateOne({ _id: productId }, { $set: { action, reason } });
+     if (updateData) {
+      return res.status(200).json({ success: true });
+    } else {
+      return res.status(400).json({ success: false, message: 'Failed to update the product.' });
+    }
+  }catch(err){
+    console.log(err)
+  }
+}
+
 module.exports = {
   loadLogin,
   verifyLogin,
@@ -126,4 +160,7 @@ module.exports = {
   distributerList,
   distributerBlock,
   distributerUnblock,
+  loadProductApprovePage,
+  productDetails,
+  productApproval,
 };
