@@ -8568,7 +8568,7 @@ pre {
 .table, .jsgrid .jsgrid-table {
   width: 100%;
   margin-bottom: 1rem;
-  color: #ffffff; }
+  color: #fff; }
   .table th, .jsgrid .jsgrid-table th,
   .table td,
   .jsgrid .jsgrid-table td {
@@ -8766,7 +8766,7 @@ pre {
 
 .table-dark {
   color: #fff;
-  background-color: #212529; }
+  background-color: #191c24; }
   .table-dark th,
   .table-dark td,
   .table-dark thead th {
@@ -17882,12 +17882,12 @@ div.tagsinput {
 /* Tables */
 .table, .jsgrid .jsgrid-table {
   margin-bottom: 0;
-  color: #6c7293; }
+  color: #fff; }
   .table thead th, .jsgrid .jsgrid-table thead th {
     border-top: 0;
     border-bottom-width: 1px;
     font-weight: 500;
-    color: #6c7293; }
+    color: #fff; }
     .table thead th i, .jsgrid .jsgrid-table thead th i {
       margin-left: 0.325rem; }
   .table th, .jsgrid .jsgrid-table th,
@@ -20698,7 +20698,7 @@ div.tagsinput {
         transition-duration: 0.45s;
         transition-property: color;
         -webkit-transition-property: color;
-        height: 46px;
+        height: 70px;
         border-radius: 0px 100px 100px 0px; }
         .sidebar .nav .nav-item .nav-link i {
           color: inherit; }
@@ -20728,7 +20728,7 @@ div.tagsinput {
         .sidebar .nav .nav-item .nav-link .menu-title {
           color: inherit;
           display: inline-block;
-          font-size: 0.9375rem;
+          font-size: 0.9999rem;
           line-height: 1;
           vertical-align: middle; }
         .sidebar .nav .nav-item .nav-link .badge {
@@ -20877,8 +20877,8 @@ div.tagsinput {
         font-size: 0.8125rem;
         line-height: 1;
         background: rgba(108, 114, 147, 0.2);
-        width: 31px;
-        height: 31px;
+        width: 40px;
+        height: 40px;
         border-radius: 100%;
         display: flex;
         align-items: center;
