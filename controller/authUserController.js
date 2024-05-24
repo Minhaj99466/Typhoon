@@ -63,6 +63,15 @@ const loadHome = async (req, res, next) => {
     next(error);
   }
 };
+//============================  Landing PAGE LOAD ========================//
+
+const loadLanding = async (req, res, next) => {
+  try {
+    res.render("landing", { session: req.session.user_id });
+  } catch (error) {
+    next(error);
+  }
+};
 
 const userLogout = async (req, res, next) => {
   try {
@@ -122,4 +131,5 @@ module.exports = {
   verifyLogin,
   loadRegister,
   insertUser,
+  loadLanding
 };

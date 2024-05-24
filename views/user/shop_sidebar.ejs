@@ -114,20 +114,22 @@
                       </div>
                       <div id="list" class="tab-pane fade">
                         <div class="row">
+                          <% if(productData.length > 0){
+                            for(let i = 0; i< productData.length;i++ ){ %>
                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="btc_shop_indx_cont_list_box_wrapper">
                               <div class="btc_shop_list_img_wrapper">
-                                <img src="/userAssets/images/prdct_5.png" alt="shop_img" class="img-responsive" />
+                                <img src="/distributorAssets/distributorImage/<%= productData[i].image[0] %>" alt="shop_img" class="img-responsive" />
                               </div>
                               <div class="btc_shop_list_img_cont_wrapper">
                                 <div class="btc_shop_product_price_wrapper pdt">
                                   <ul>
-                                    <li>$150</li>
+                                    <li>$ <%= productData[i].price %></li>
                                   </ul>
                                 </div>
 
                                 <h1>
-                                  <a href="javascript:;">Solaris Panel V405</a>
+                                  <a href="javascript:;"><%= productData[i].productName %></a>
                                 </h1>
                                 <div class="cc_shop_list">
                                   <i class="fa fa-star"></i>
@@ -138,10 +140,7 @@
                                 </div>
 
                                 <p>
-                                  Lorem ipsum dolor sit amet, consectetur
-                                  adipisicing elit, sed do enim ad minimveniam,
-                                  quis do enim ad minimven trud exercitation
-                                  ullamco.
+                                  <%= productData[i].description %>
                                 </p>
 
                                 <div class="btc_shop_list_bottom_social_wrapper">
@@ -160,281 +159,8 @@
                               </div>
                             </div>
                           </div>
-                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="btc_shop_indx_cont_list_box_wrapper">
-                              <div class="btc_shop_list_img_wrapper">
-                                <img src="/userAssets/images/prdct_6.png" alt="shop_img" class="img-responsive" />
-                              </div>
-                              <div class="btc_shop_list_img_cont_wrapper">
-                                <div class="btc_shop_product_price_wrapper pdt">
-                                  <ul>
-                                    <li>$150</li>
-                                  </ul>
-                                </div>
-
-                                <h1>
-                                  <a href="javascript:;">Solaris Panel V405</a>
-                                </h1>
-                                <div class="cc_shop_list">
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star-o"></i>
-                                  <i class="fa fa-star-o"></i>
-                                </div>
-
-                                <p>
-                                  Lorem ipsum dolor sit amet, consectetur
-                                  adipisicing elit, sed do enim ad minimveniam,
-                                  quis do enim ad minimven trud exercitation
-                                  ullamco.
-                                </p>
-
-                                <div class="btc_shop_list_bottom_social_wrapper">
-                                  <ul>
-                                    <li class="shop_list_first_btn">
-                                      <a href="#!" class="waves-effect waves-light waves-ripple"><i
-                                          class="fa fa-heart"></i>wishlist</a>
-                                    </li>
-                                    <li>
-                                      <a href="#!" class="waves-effect waves-light waves-ripple"><i
-                                          class="fa fa-shopping-cart"></i>add to
-                                        cart</a>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="btc_shop_indx_cont_list_box_wrapper">
-                              <div class="btc_shop_list_img_wrapper">
-                                <img src="/userAssets/images/prdct_5.png" alt="shop_img" class="img-responsive" />
-                              </div>
-                              <div class="btc_shop_list_img_cont_wrapper">
-                                <div class="btc_shop_product_price_wrapper pdt">
-                                  <ul>
-                                    <li>$150</li>
-                                  </ul>
-                                </div>
-
-                                <h1>
-                                  <a href="javascript:;">Solaris Panel V405</a>
-                                </h1>
-                                <div class="cc_shop_list">
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star-o"></i>
-                                  <i class="fa fa-star-o"></i>
-                                </div>
-
-                                <p>
-                                  Lorem ipsum dolor sit amet, consectetur
-                                  adipisicing elit, sed do enim ad minimveniam,
-                                  quis do enim ad minimven trud exercitation
-                                  ullamco.
-                                </p>
-
-                                <div class="btc_shop_list_bottom_social_wrapper">
-                                  <ul>
-                                    <li class="shop_list_first_btn">
-                                      <a href="#!" class="waves-effect waves-light waves-ripple"><i
-                                          class="fa fa-heart"></i>wishlist</a>
-                                    </li>
-                                    <li>
-                                      <a href="#!" class="waves-effect waves-light waves-ripple"><i
-                                          class="fa fa-shopping-cart"></i>add to
-                                        cart</a>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="btc_shop_indx_cont_list_box_wrapper">
-                              <div class="btc_shop_list_img_wrapper">
-                                <img src="/userAssets/images/prdct_4.png" alt="shop_img" class="img-responsive" />
-                              </div>
-                              <div class="btc_shop_list_img_cont_wrapper">
-                                <div class="btc_shop_product_price_wrapper pdt">
-                                  <ul>
-                                    <li>$150</li>
-                                  </ul>
-                                </div>
-
-                                <h1>
-                                  <a href="javascript:;">Solaris Panel V405</a>
-                                </h1>
-                                <div class="cc_shop_list">
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star-o"></i>
-                                  <i class="fa fa-star-o"></i>
-                                </div>
-
-                                <p>
-                                  Lorem ipsum dolor sit amet, consectetur
-                                  adipisicing elit, sed do enim ad minimveniam,
-                                  quis do enim ad minimven trud exercitation
-                                  ullamco.
-                                </p>
-
-                                <div class="btc_shop_list_bottom_social_wrapper">
-                                  <ul>
-                                    <li class="shop_list_first_btn">
-                                      <a href="#!" class="waves-effect waves-light waves-ripple"><i
-                                          class="fa fa-heart"></i>wishlist</a>
-                                    </li>
-                                    <li>
-                                      <a href="#!" class="waves-effect waves-light waves-ripple"><i
-                                          class="fa fa-shopping-cart"></i>add to
-                                        cart</a>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="btc_shop_indx_cont_list_box_wrapper">
-                              <div class="btc_shop_list_img_wrapper">
-                                <img src="/userAssets/images/prdct_3.jpg" alt="shop_img" class="img-responsive" />
-                              </div>
-                              <div class="btc_shop_list_img_cont_wrapper">
-                                <div class="btc_shop_product_price_wrapper pdt">
-                                  <ul>
-                                    <li>$150</li>
-                                  </ul>
-                                </div>
-
-                                <h1>
-                                  <a href="javascript:;">Solaris Panel V405</a>
-                                </h1>
-                                <div class="cc_shop_list">
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star-o"></i>
-                                  <i class="fa fa-star-o"></i>
-                                </div>
-
-                                <p>
-                                  Lorem ipsum dolor sit amet, consectetur
-                                  adipisicing elit, sed do enim ad minimveniam,
-                                  quis do enim ad minimven trud exercitation
-                                  ullamco.
-                                </p>
-
-                                <div class="btc_shop_list_bottom_social_wrapper">
-                                  <ul>
-                                    <li class="shop_list_first_btn">
-                                      <a href="#!" class="waves-effect waves-light waves-ripple"><i
-                                          class="fa fa-heart"></i>wishlist</a>
-                                    </li>
-                                    <li>
-                                      <a href="#!" class="waves-effect waves-light waves-ripple"><i
-                                          class="fa fa-shopping-cart"></i>add to
-                                        cart</a>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="btc_shop_indx_cont_list_box_wrapper">
-                              <div class="btc_shop_list_img_wrapper">
-                                <img src="/userAssets/images/prdct_2.jpg" alt="shop_img" class="img-responsive" />
-                              </div>
-                              <div class="btc_shop_list_img_cont_wrapper">
-                                <div class="btc_shop_product_price_wrapper pdt">
-                                  <ul>
-                                    <li>$150</li>
-                                  </ul>
-                                </div>
-                                <h1>
-                                  <a href="javascript:;">Solaris Panel V405</a>
-                                </h1>
-                                <div class="cc_shop_list">
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star-o"></i>
-                                  <i class="fa fa-star-o"></i>
-                                </div>
-
-                                <p>
-                                  Lorem ipsum dolor sit amet, consectetur
-                                  adipisicing elit, sed do enim ad minimveniam,
-                                  quis do enim ad minimven trud exercitation
-                                  ullamco.
-                                </p>
-
-                                <div class="btc_shop_list_bottom_social_wrapper">
-                                  <ul>
-                                    <li class="shop_list_first_btn">
-                                      <a href="#!" class="waves-effect waves-light waves-ripple"><i
-                                          class="fa fa-heart"></i>wishlist</a>
-                                    </li>
-                                    <li>
-                                      <a href="#!" class="waves-effect waves-light waves-ripple"><i
-                                          class="fa fa-shopping-cart"></i>add to
-                                        cart</a>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="btc_shop_indx_cont_list_box_wrapper">
-                              <div class="btc_shop_list_img_wrapper">
-                                <img src="/userAssets/images/prdct_1.jpg" alt="shop_img" class="img-responsive" />
-                              </div>
-                              <div class="btc_shop_list_img_cont_wrapper">
-                                <div class="btc_shop_product_price_wrapper pdt">
-                                  <ul>
-                                    <li>$150</li>
-                                  </ul>
-                                </div>
-                                <h1>
-                                  <a href="javascript:;">Solaris Panel V405</a>
-                                </h1>
-                                <div class="cc_shop_list">
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star-o"></i>
-                                  <i class="fa fa-star-o"></i>
-                                </div>
-
-                                <p>
-                                  Lorem ipsum dolor sit amet, consectetur
-                                  adipisicing elit, sed do enim ad minimveniam,
-                                  quis do enim ad minimven trud exercitation
-                                  ullamco.
-                                </p>
-
-                                <div class="btc_shop_list_bottom_social_wrapper">
-                                  <ul>
-                                    <li class="shop_list_first_btn">
-                                      <a href="#!" class="waves-effect waves-light waves-ripple"><i
-                                          class="fa fa-heart"></i>wishlist</a>
-                                    </li>
-                                    <li>
-                                      <a href="#!" class="waves-effect waves-light waves-ripple"><i
-                                          class="fa fa-shopping-cart"></i>add to
-                                        cart</a>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                          <% }
+                                } %>   
                         </div>
                       </div>
                     </div>
@@ -456,137 +182,13 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 visible-xs visible-sm">
-              <div class="sidebar_widget">
-                <h4>search here</h4>
-                <img src="/userAssets/images/heading_line.png" alt="title" />
-                <form class="search_form" role="search">
-                  <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search here" />
-                  </div>
-                  <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
-              </div>
-              <div class="sidebar_widget">
-                <h4>item categories</h4>
-                <img src="/userAssets/images/heading_line.png" alt="title" />
-                <div class="archives_wrapper">
-                  <ul>
-                    <li>
-                      <a href="javascript:;">
-                        <i class="fa fa-caret-right" aria-hidden="true"></i>
-                        electricity <span>(02)</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="javascript:;">
-                        <i class="fa fa-caret-right" aria-hidden="true"></i>organization <span>(25)</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="javascript:;">
-                        <i class="fa fa-caret-right" aria-hidden="true"></i>researh
-                        <span>(35)</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="javascript:;">
-                        <i class="fa fa-caret-right" aria-hidden="true"></i>school
-                        <span>(43)</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="sidebar_widget">
-                <h4>filter by price</h4>
-                <img src="/userAssets/images/heading_line.png" alt="title" />
-                <div class="widget price-range">
-                  <ul>
-                    <li class="range">
-                      <div id="range-price_2" class="range-box"></div>
-                      <span>price:</span>
-                      <input type="text" id="price_2" class="price-box" readonly />
-                    </li>
-                    <li class="shop_btn_wrapper">
-                      <ul>
-                        <li>
-                          <a href="#!" class="waves-effect waves-light waves-ripple">filter</a>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="sidebar_widget">
-                <h4>popular products</h4>
-                <img src="/userAssets/images/heading_line.png" alt="title" />
-                <div class="latest_post_wrapper">
-                  <div class="blog_wrapper1">
-                    <div class="sc_blog_image">
-                      <img src="/userAssets/images/blog_1.png" class="img-responsive" alt="blog_img1" />
-                    </div>
-                    <div class="sc_blog_text">
-                      <h5>
-                        <a href="javascript:;">Electricity is on track for what.</a>
-                      </h5>
-                      <div class="sc_blog_date">June 28, 2022</div>
-                    </div>
-                  </div>
-                  <div class="blog_wrapper2">
-                    <div class="sc_blog_image">
-                      <img src="/userAssets/images/blog_2.png" class="img-responsive" alt="blog_img2" />
-                    </div>
-                    <div class="sc_blog_text">
-                      <h5>
-                        <a href="javascript:;">Electricity is on track for what.</a>
-                      </h5>
-                      <div class="sc_blog_date">June 28, 2022</div>
-                    </div>
-                  </div>
-                  <div class="blog_wrapper3">
-                    <div class="sc_blog_image">
-                      <img src="/userAssets/images/blog_3.png" class="img-responsive" alt="blog_img3" />
-                    </div>
-                    <div class="sc_blog_text">
-                      <h5>
-                        <a href="javascript:;">Electricity is on track for what.</a>
-                      </h5>
-                      <div class="sc_blog_date">June 28, 2022</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="sidebar_widget">
-                <h4>tags</h4>
-                <img src="/userAssets/images/heading_line.png" alt="title" />
-                <div class="archives_wrapper">
-                  <div class="gc_blog_cloud_side_menu">
-                    <ul>
-                      <li><a href="javascript:;">sun</a></li>
-                      <li><a href="javascript:;">ecosystem</a></li>
-                      <li><a href="javascript:;">wind</a></li>
-                      <li><a href="javascript:;">power</a></li>
-                      <li><a href="javascript:;">energy</a></li>
-                      <li><a href="javascript:;">solar</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="slidebar_add_img">
-                <a href="javascript:;">
-                  <img src="/userAssets/images/add.png" alt="img" class="img-responsive" />
-                </a>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>
       <!-- blog_section end -->
       <!--sw our newsletter wrapper start-->
-      <div class="sw_our_newsletter_wrapper">
+      <!-- <div class="sw_our_newsletter_wrapper">
         <div class="container">
           <div class="row">
             <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12">
@@ -615,7 +217,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- sw our newsletter section end-->
 
       <!-- sw footer section start-->
