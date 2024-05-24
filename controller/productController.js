@@ -22,7 +22,6 @@ const insertProduct = async (req, res, next) => {
       warranty,
       discription,
     } = req.body;
-console.log(req.body);
     if (!productname || !price || !brand || !modelnumber || !quantity || !warranty || !discription) {
       return res.render('errorPage', { message: 'All fields are required.' });
     }
