@@ -1229,7 +1229,7 @@ nav ul li.active {
 .sw_product_indx_img_wrapper img {
   width: 100%;
   object-fit: fill;
-  min-height: 350px;
+  height: 350px;
 }
 .sw_product_indx_img_cont_wrapper {
   float: left;
