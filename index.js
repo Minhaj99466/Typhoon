@@ -3,10 +3,11 @@ const mongoose = require("mongoose");
 const path = require("path");
 const nocache = require("nocache");
 const session = require("express-session");
+const env = require("dotenv")
 
 const app = express();
-
-mongoose.connect("mongodb://127.0.0.1:27017/typhoon");
+env.config()
+mongoose.connect(process.env.MONGODB_URL)
 
 
 const publicPath = path.join(__dirname, "public");
@@ -38,6 +39,6 @@ app.use("/admin", adminRoute);
 const distributorRoute = require("./routes/distributorRoute");
 app.use("/distributor", distributorRoute);
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log(`server is loading 3000,tyfooon `);
 });
