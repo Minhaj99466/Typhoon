@@ -3,7 +3,7 @@ const productModel = require("../model/productModal");
 //===================== LOAD PRODUCT =======================//
 const loadProduct = async (req, res, next) => {
   try {
-    const productData = await productModel.find({is_delete:false})
+    const productData = await productModel.find({distributor_id:req.session.distributer_id,is_delete:false})
     res.render("productList",{productData});
   } catch (error) {
     next(error);
