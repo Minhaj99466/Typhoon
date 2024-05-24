@@ -1,6 +1,7 @@
 <%- include('../distributorLayout/header.ejs') %>
 <%- include('../distributorLayout/sidebar.ejs') %>
 <%- include('../distributorLayout/navbar.ejs') %>
+
 <div class="main-panel">
    <div class="content-wrapper">
       <div class="row">
@@ -105,30 +106,38 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
          </div>
          <div class="modal-body">
-            <form action="/distributor/productlist" method="post" enctype="multipart/form-data">
+            <form action="/distributor/productlist" method="post" enctype="multipart/form-data" id="form">
                <div class="mb-3">
                   <label for="recipient-name" class="col-form-label">Product name:</label>
-                  <input type="text" name="productname" class="form-control" id="recipient-name">
+                  <input type="text"  name="productname" class="form-control" id="productname">
+                  <span id="productname_error" class="text-danger"></span>
                </div>
                <div class="mb-3">
                   <label for="recipient-name" class="col-form-label">Price:</label>
-                  <input type="text" name="price" class="form-control" id="recipient-name">
+                  <input type="text" name="price" class="form-control" id="price">
+                  <span id="price_error" class="text-danger"></span>
+
                </div>
                <div class="mb-3">
                   <label for="recipient-name" class="col-form-label">Brand:</label>
-                  <input type="text" name="brand" class="form-control" id="recipient-name">
+                  <input type="text" name="brand" class="form-control" id="brand">
+                  <span id="brand_error" class="text-danger"></span>
+
                </div>
                <div class="mb-3">
                   <label for="recipient-name" class="col-form-label">Model number:</label>
-                  <input type="text" name="modelnumber" class="form-control" id="recipient-name">
+                  <input type="text" name="modelnumber" class="form-control" id="modelnumber">
+                  <span id="modelnumber_error" class="text-danger"></span>
                </div>
                <div class="mb-3">
                   <label for="recipient-name" class="col-form-label">Quantity:</label>
-                  <input type="text" name="quantity" class="form-control" id="recipient-name">
+                  <input type="text" name="quantity" class="form-control" id="quantity">
+                  <span id="quantity_error" class="text-danger"></span>
                </div>
                <div class="mb-3">
-                  <label for="recipient-name" class="col-form-label">waranty:</label>
-                  <input type="text" name="waranty" class="form-control" id="recipient-name">
+                  <label for="recipient-name" class="col-form-label">warranty:</label>
+                  <input type="text" name="warranty" class="form-control" id="warranty">
+                  <span id="warranty_error" class="text-danger"></span>
                </div>
                <div class="mb-3">
                   <label for="recipient-name" class="col-form-label">Image Upload</label>
@@ -136,8 +145,9 @@
                   <span class="text-danger" id="image-error"></span>
                </div>
                <div class="mb-3">
-                  <label for="message-text" class="col-form-label">Discrption:</label>
-                  <textarea class="form-control" name="discrption" id="message-text"></textarea>
+                  <label for="message-text" class="col-form-label">Discription:</label>
+                  <textarea class="form-control" name="discription" id="discription"></textarea>
+                  <span class="text-danger" id="discription-error"></span>
                </div>
          </div>
          <div class="modal-footer">
@@ -148,4 +158,5 @@
       </div>
    </div>
 </div>
+<script src="/distributorAssets/js/validation/addProduct.js"></script>
 <%- include('../distributorLayout/footer.ejs') %>
