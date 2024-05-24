@@ -29,6 +29,15 @@ const loadCheckOut = async (req, res, next) => {
     next(error);
   }
 };
+//=============================   ORDER PAGE LOAD  ========================//
+
+const loadOrder = async (req, res, next) => {
+  try {
+    res.render("order", { session: req.session.user_id });
+  } catch {
+    next(error);
+  }
+};
 
 //=============================   CONTACT-US PAGE LOAD  ========================//
 
@@ -89,5 +98,6 @@ module.exports = {
   loadError,
   loadService,
   loadShop,
-  loadSingle
+  loadSingle,
+  loadOrder
 };
