@@ -31,13 +31,8 @@ const verifyLogin = async (req, res, next) => {
     if (!passwordMatch) {
       return res.render("login", { message: "password is incorrect" });
     }
-<<<<<<< HEAD
-    if (!userData.is_admin === 0) {
-      res.render("login", { message: "this user is not an admin" });
-=======
     if (userData.is_admin === 0) {
       return res.render("login", { message: "this user is not an admin" });
->>>>>>> b693bb44b907c185b95af00f5d654df66402c70a
     }
     req.session.admin_id = userData._id;
     res.redirect("/admin/dashboard");
