@@ -24,6 +24,6 @@ userRoute.get("/contact", auth.userIsLogin,userController.loadContactUs);
 userRoute.get("/error", auth.userIsLogin,userController.loadError);
 userRoute.get("/service", auth.userIsLogin,userController.loadService);
 userRoute.get("/shop",auth.userIsLogin, userController.loadShop);
-userRoute.get("/singleshop",auth.userIsLogin, userController.loadSingle);
+userRoute.get("/singleProduct/:id",auth.userIsLogin, userController.loadSingle);
 
 module.exports = userRoute;

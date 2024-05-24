@@ -74,8 +74,9 @@ const loadShop = async (req, res, next) => {
 
 const loadSingle = async (req, res, next) => {
   try {
-    res.render("singleshop", { session: req.session.user_id });
-  } catch {
+    const productData = await productModel.findOne({_id:req.params.id,action:"approve",is_delete:false})
+    res.render("singleshop", { session: req.session.user_id , productData});
+  } catch(error) {
     next(error);
   }
 };
