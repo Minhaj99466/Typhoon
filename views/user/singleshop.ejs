@@ -136,35 +136,32 @@
                         <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
                             <div class="sw_abt_right_btm_wrapper">
                                 <div class="sw_left_heading_wraper ">
-                                    <h1 class="text-center">SolarWorld 280</h1>
+                                    <h1 class="text-center"><%= productData.productName %></h1>
                                     <div class="sw_product_indx_img_cont_wrapper sw_product_indx_img_cont_wrapper_2">
                                         <div><img src="/userAssets/images/heading_line.png" alt="title" /></div>
 
-                                        <h5>$ 156/sqft</h5>
+                                        <h5>$ <%= productData.price %></h5>
                                         <div
                                             class="sw_product_indx_img_cont_wrapper sw_product_indx_img_cont_wrapper_2 ">
                                             <h1>Product Details</h1>
                                             <img src="/userAssets/images/heading_line.png" alt="title" />
                                             <p>
-                                                Consectetur adipisicing elit, sed do smod tempor incididunt ut
-                                                labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                                nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                                modo consequat. Duis aute irure dolor in reprehenderit.
+                                              <%= productData.description %>
                                             </p>
                                             <div class="table-shop">
                                                 <div>
                                                     <table>
                                                         <tr>
-                                                            <td>Brand</td>
-                                                            <td>Rayzon</td>
+                                                            <td>Brand:</td>
+                                                            <td> <%= productData.brand %></td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Type</td>
-                                                            <td>Polycrystalline</td>
+                                                            <td>Model Number:</td>
+                                                            <td> <%= productData.modelNumber %></td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Wattage</td>
-                                                            <td>125 kW</td>
+                                                            <td>warranty:</td>
+                                                            <td><%= productData.warranty %></td>
                                                         </tr>
                                                     </table>
 
