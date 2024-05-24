@@ -19,11 +19,11 @@ const insertProduct = async (req, res, next) => {
       brand,
       modelnumber,
       quantity,
-      waranty,
-      discrption,
+      warranty,
+      discription,
     } = req.body;
-
-    if (!productname || !price || !brand || !modelnumber || !quantity || !waranty || !discrption) {
+console.log(req.body);
+    if (!productname || !price || !brand || !modelnumber || !quantity || !warranty || !discription) {
       return res.render('errorPage', { message: 'All fields are required.' });
     }
     const image = [];
@@ -39,8 +39,8 @@ const insertProduct = async (req, res, next) => {
       modelNumber: modelnumber,
       brand,
       quantity: quantity,
-      description: discrption,
-      warranty: waranty,
+      description: discription,
+      warranty: warranty,
       image,
       distributor_id: req.session.distributer_id,
     });
