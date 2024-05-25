@@ -42,14 +42,17 @@
                         </p>
                      </div>
                      <div class="col-md-6">
+                      
                         <div class="form-group">
                            <label for="approvalReason">Reason for Approval/Rejection</label>
-                           <textarea class="form-control" id="approvalReason" rows="3"></textarea>
+                           <textarea class="form-control" id="approvalReason"  rows="3" required></textarea>
+                           <span id="reason_error" class="text-danger"></span>
                         </div>
-                        <button type="button" id="approveButton"
+                        <button type="submit"  id="approveButton"
                            class="btn btn-success">Approve</button>
-                        <button type="button" id="rejectButton"
+                        <button type="submit" id="rejectButton"
                            class="btn btn-danger">Reject</button>
+                       
                      </div>
                   </div>
                   <div class="notification-container"></div>
@@ -62,12 +65,23 @@
 <%- include('../adminLayout/footer.ejs') %>
 <script>
    document.getElementById('approveButton').addEventListener('click', function () {
-       sendApprovalRequest('approve');
+      validateAndSendRequest('approve');
    });
    
    document.getElementById('rejectButton').addEventListener('click', function () {
-       sendApprovalRequest('reject');
+      validateAndSendRequest('reject');
    });
+
+   function validateAndSendRequest(action) {
+        const reason = document.getElementById('approvalReason').value.trim();
+        if (!reason) {
+         const error_message = document.getElementById('reason_error')
+         error_message.innerHTML="Reason for approval/rejection is required."
+            return;
+        }else{
+         sendApprovalRequest(action)
+        }
+      }
    
    function sendApprovalRequest(action) {
        const reason = document.getElementById('approvalReason').value;

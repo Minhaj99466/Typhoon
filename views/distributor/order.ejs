@@ -1,6 +1,6 @@
-<%- include('../distributorLayout/header.ejs') %>
-  <%- include('../distributorLayout/sidebar.ejs') %>
-    <%- include('../distributorLayout/navbar.ejs') %>
+<%#- include('../distributorLayout/header.ejs') %>
+  <%#- include('../distributorLayout/sidebar.ejs') %>
+    <%#- include('../distributorLayout/navbar.ejs') %>
 
   <div class="main-panel">
   <div class="content-wrapper">
@@ -25,26 +25,26 @@
               </tr>
             </thead>
             <tbody>
-                <% if(orders.length > 0){
+                <%# if(orders.length > 0){
                     orders.forEach((order,i)=>{
                       %>
                      
                   <tr>
                     
-                    <td><%= i+1 %></td>
-                    <td><%= order.userName%></td>
-                    <td><%= order._id%></td>
-                    <td><%= order.paymentMethod%></td>
-                    <td><%= order.totalAmount%></td>
-                    <td><%= order.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).replace(/\//g, '-') %></td>
+                    <td><%#= i+1 %></td>
+                    <td><%#= order.userName%></td>
+                    <td><%#= order._id%></td>
+                    <td><%#= order.paymentMethod%></td>
+                    <td><%#= order.totalAmount%></td>
+                    <td><%#= order.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).replace(/\//g, '-') %></td>
                     
-                    <td><a href="vieworder/<%= order._id %>"><button class="btn btn-outline-info" href=""><i class="mdi mdi-file-check btn-icon-prepend"></i>View</button></a></td>
+                    <td><a href="vieworder/<%#= order._id %>"><button class="btn btn-outline-info" href=""><i class="mdi mdi-file-check btn-icon-prepend"></i>View</button></a></td>
                   </tr>
                
-                  <%})
+                  <%#})
                 }else{ %>
                           <h1 class="d-flex justify-content-center">You Have No Orders</h1>
-                  <% } %>
+                  <%# } %>
              
             </tbody>
           </table>
@@ -61,4 +61,4 @@
 </div>
 
 
-    <%- include('../distributorLayout/footer.ejs') %>
+    <%#- include('../distributorLayout/footer.ejs') %>
