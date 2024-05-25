@@ -1,4 +1,5 @@
 const productModel = require("../model/productModal");
+const cartModel = require("../model/cartModel")
 
 //=============================   CART PAGE LOAD  ========================//
 
@@ -25,6 +26,15 @@ const loadAbout = async (req, res, next) => {
 const loadCheckOut = async (req, res, next) => {
   try {
     res.render("checkout", { session: req.session.user_id });
+  } catch {
+    next(error);
+  }
+};
+//=============================   ORDER PAGE LOAD  ========================//
+
+const loadOrder = async (req, res, next) => {
+  try {
+    res.render("order", { session: req.session.user_id });
   } catch {
     next(error);
   }
@@ -81,17 +91,6 @@ const loadSingle = async (req, res, next) => {
   }
 };
 
-const addToCart = async(req, res, next) => {
-  try {
-     console.log(req.body, "sjhgdsjh")
-     const productData = await productModel.findById({_id:req.body.id})
-     console.log(productData)
-     
-  } catch (error) {
-    console.log(error)
-  }
-}
-
 module.exports = {
   loadCart,
   loadAbout,
@@ -101,5 +100,4 @@ module.exports = {
   loadService,
   loadShop,
   loadSingle,
-  addToCart,
 };

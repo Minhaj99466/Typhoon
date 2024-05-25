@@ -13,7 +13,6 @@ const cartSchema = new mongoose.Schema({
       {
         productId: {
           type: String,
-          required: true,
           ref: "Product",
         },
         count: {
@@ -22,7 +21,6 @@ const cartSchema = new mongoose.Schema({
         },
         productPrice: {
           type: Number,
-          required: true,
         },
         totalPrice: {
           type: Number,

@@ -1,6 +1,7 @@
 const express = require("express");
 const userRoute = express();
 const userController = require("../controller/userController");
+const cartController = require("../controller/cartController")
 const authUserController = require("../controller/authUserController");
 const auth = require("../middleware/userAuth");
 
@@ -18,6 +19,7 @@ userRoute.post("/login", authUserController.verifyLogin);
 userRoute.get("/logout", auth.userIsLogin, authUserController.userLogout);
 
 userRoute.get("/cart", auth.userIsLogin,userController.loadCart);
+// userRoute.get("/order", auth.userIsLogin,userController.loadOrder);
 userRoute.get("/about", auth.userIsLogin,userController.loadAbout);
 userRoute.get("/checkout",auth.userIsLogin, userController.loadCheckOut);
 userRoute.get("/contact", auth.userIsLogin,userController.loadContactUs);
@@ -25,6 +27,6 @@ userRoute.get("/error", auth.userIsLogin,userController.loadError);
 userRoute.get("/service", auth.userIsLogin,userController.loadService);
 userRoute.get("/shop",auth.userIsLogin, userController.loadShop);
 userRoute.get("/singleProduct/:id",auth.userIsLogin, userController.loadSingle);
-userRoute.post("/addtocart", userController.addToCart)
+userRoute.post("/addtocart", cartController.addToCart)
 
 module.exports = userRoute;
