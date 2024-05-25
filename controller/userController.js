@@ -81,6 +81,17 @@ const loadSingle = async (req, res, next) => {
   }
 };
 
+const addToCart = async(req, res, next) => {
+  try {
+     console.log(req.body, "sjhgdsjh")
+     const productData = await productModel.findById({_id:req.body.id})
+     console.log(productData)
+     
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 module.exports = {
   loadCart,
   loadAbout,
@@ -89,5 +100,6 @@ module.exports = {
   loadError,
   loadService,
   loadShop,
-  loadSingle
+  loadSingle,
+  addToCart,
 };

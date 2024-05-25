@@ -25,5 +25,6 @@ userRoute.get("/error", auth.userIsLogin,userController.loadError);
 userRoute.get("/service", auth.userIsLogin,userController.loadService);
 userRoute.get("/shop",auth.userIsLogin, userController.loadShop);
 userRoute.get("/singleProduct/:id",auth.userIsLogin, userController.loadSingle);
+userRoute.post("/addtocart", userController.addToCart)
 
 module.exports = userRoute;

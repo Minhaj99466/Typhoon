@@ -80,32 +80,13 @@
                                 <div class="sw_pdct_img">
                                   <img src="/userAssets/images/line.png" alt="img" />
                                 </div>
-                                <h5>$ <%= productData[i].price %></h5>
+                                
                                 <h1><a href="javascript:;"><%= productData[i].productName %></a></h1>
 
                                 <div class="cc_li_cont_wrapper">
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star-o"></i>
-                                  <i class="fa fa-star-o"></i>
+                                  <h2>₹ <%= productData[i].price %></h2>
                                 </div>
-                                <div class="cc_li_img_overlay">
-                                  <div class="cc_li_img_text">
-                                    <ul>
-                                      <li>
-                                        <a href="javascript:;"><i class="fa fa-shopping-cart"></i></a>
-                                      </li>
-                                      <li>
-                                        <a href="javascript:;"><i class="fa fa-heart"></i></a>
-                                      </li>
-
-                                      <li>
-                                        <a href="javascript:;"><i class="fa fa-expand"></i></a>
-                                      </li>
-                                    </ul>
-                                  </div>
-                                </div>
+                                <h5 onclick="addToCart('<%= productData[i]._id %>')">  <i class="fa fa-shopping-cart"></i>   Add to cart</h5>
                               </div>
                             </div>
                           </div>

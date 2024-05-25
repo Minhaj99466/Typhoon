@@ -1,4 +1,5 @@
 const productModel = require("../model/productModal");
+const cartModel    = require("../model/cartModel")
 
 //===================== LOAD PRODUCT =======================//
 const loadProduct = async (req, res, next) => {
