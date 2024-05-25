@@ -18,15 +18,19 @@ userRoute.get("/login", auth.userIsLogout, authUserController.loadLogin);
 userRoute.post("/login", authUserController.verifyLogin);
 userRoute.get("/logout", auth.userIsLogin, authUserController.userLogout);
 
-userRoute.get("/cart", auth.userIsLogin,userController.loadCart);
 // userRoute.get("/order", auth.userIsLogin,userController.loadOrder);
 userRoute.get("/about", auth.userIsLogin,userController.loadAbout);
 userRoute.get("/checkout",auth.userIsLogin, userController.loadCheckOut);
 userRoute.get("/contact", auth.userIsLogin,userController.loadContactUs);
 userRoute.get("/error", auth.userIsLogin,userController.loadError);
 userRoute.get("/service", auth.userIsLogin,userController.loadService);
+
 userRoute.get("/shop",auth.userIsLogin, userController.loadShop);
 userRoute.get("/singleProduct/:id",auth.userIsLogin, userController.loadSingle);
+
 userRoute.post("/addtocart", cartController.addToCart)
+userRoute.get("/cart",auth.userIsLogin,cartController.loadCart)
+userRoute.post("/deletecart",cartController.deleteProductFromCart)
+userRoute.post("/changeQuantity",cartController.changeProductCount)
 
 module.exports = userRoute;

@@ -1,15 +1,4 @@
 const productModel = require("../model/productModal");
-const cartModel = require("../model/cartModel")
-
-//=============================   CART PAGE LOAD  ========================//
-
-const loadCart = async (req, res, next) => {
-  try {
-    res.render("cart", { session: req.session.user_id });
-  } catch {
-    next(error);
-  }
-};
 
 //=============================   ABOUT PAGE LOAD  ========================//
 
@@ -92,7 +81,6 @@ const loadSingle = async (req, res, next) => {
 };
 
 module.exports = {
-  loadCart,
   loadAbout,
   loadCheckOut,
   loadContactUs,
