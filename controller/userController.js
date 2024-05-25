@@ -1,4 +1,5 @@
 const productModel = require("../model/productModal");
+const Cart = require("../model/cartModel");
 
 //=============================   ABOUT PAGE LOAD  ========================//
 
@@ -14,7 +15,14 @@ const loadAbout = async (req, res, next) => {
 
 const loadCheckOut = async (req, res, next) => {
   try {
-    res.render("checkout", { session: req.session.user_id });
+    const subTotal = await Cart.aggregate([
+      { $match: { userId: req.session.user_id } },
+      { $unwind: "$products" },
+      { $group: { _id: null, total: { $sum: "$products.totalPrice" } } },
+      { $project: { _id: 0 } },
+    ]);
+    totalAmount = subTotal.length > 0 ? subTotal[0].total : 0;
+    res.render("checkout", { session: req.session.user_id, totalAmount });
   } catch {
     next(error);
   }
@@ -63,8 +71,11 @@ const loadService = async (req, res, next) => {
 
 const loadShop = async (req, res, next) => {
   try {
-    const productData = await productModel.find({action:"approve",is_delete:false})
-    res.render("shop_sidebar",{ session: req.session.user_id, productData });
+    const productData = await productModel.find({
+      action: "approve",
+      is_delete: false,
+    });
+    res.render("shop_sidebar", { session: req.session.user_id, productData });
   } catch {
     next(error);
   }
@@ -73,9 +84,13 @@ const loadShop = async (req, res, next) => {
 
 const loadSingle = async (req, res, next) => {
   try {
-    const productData = await productModel.findOne({_id:req.params.id,action:"approve",is_delete:false})
-    res.render("singleshop", { session: req.session.user_id , productData});
-  } catch(error) {
+    const productData = await productModel.findOne({
+      _id: req.params.id,
+      action: "approve",
+      is_delete: false,
+    });
+    res.render("singleshop", { session: req.session.user_id, productData });
+  } catch (error) {
     next(error);
   }
 };

@@ -200,9 +200,18 @@ const changeProductCount = async (req, res, next) => {
   }
 };
 
+const placeOrder = async(req,res) =>{
+    try{
+        console.log(req.body);
+    }catch(err){
+        console.log(err)
+    }
+}
+
 module.exports = {
   addToCart,
   loadCart,
   deleteProductFromCart,
   changeProductCount,
+  placeOrder,
 };
