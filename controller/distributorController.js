@@ -24,6 +24,7 @@ const loadOrderDetails = async(req,res) =>{
               },
             },
           ]);
+          console.log(orderData);
         res.render("order",{orderData})
     } catch (error) {
         console.log(error)
