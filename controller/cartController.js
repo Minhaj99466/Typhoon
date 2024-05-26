@@ -202,7 +202,7 @@ const changeProductCount = async (req, res, next) => {
 
 const placeOrder = async(req,res) =>{
     try{
-        console.log(req.body);
+        console.log(req.body,"method");
     }catch(err){
         console.log(err)
     }
