@@ -103,4 +103,5 @@ module.exports = {
   loadService,
   loadShop,
   loadSingle,
+  loadOrder
 };

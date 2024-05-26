@@ -1,14 +1,14 @@
 <%- include('../userLayout/head.ejs') %>
 
     <body>
-          <!-- preloader Start -->
+        <!-- preloader Start -->
 
-    <div id="preloader">
-        <div id="status">
-          <img src="/userAssets/images/preloader.gif" id="preloader_image" alt="loader" />
+        <div id="preloader">
+            <div id="status">
+                <img src="/userAssets/images/preloader.gif" id="preloader_image" alt="loader" />
+            </div>
         </div>
-      </div>
-          <!-- preloader Start -->
+        <!-- preloader Start -->
 
         <%- include('../userLayout/nav.ejs') %>
 
@@ -127,8 +127,8 @@
                                             </ol>
 
                                             <!-- Wrapper for slides -->
-                                            <div class="carousel-inner " role="listbox"
-                                                style="height: 740px;  display: flex; align-items: center; justify-content: center; ">
+                                            <div class="carousel-inner " id="leftdiv" role="listbox"
+                                                style="  display: flex; align-items: center; justify-content: center; ">
 
                                                 <div class="item active">
                                                     <img src="/distributorAssets/distributorImage/<%= productData.image[0] %>"
@@ -166,7 +166,7 @@
                             </div>
                             <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
                                 <div class="sw_abt_right_btm_wrapper">
-                                    <div class="sw_left_heading_wraper ">
+                                    <div class="sw_left_heading_wraper " id="rightdiv">
                                         <h1 class="text-center">
                                             <%= productData.productName %>
                                         </h1>
@@ -234,7 +234,8 @@
                                                     </ul>
                                                 </div>
                                             </div>
-                                            <button class="btn btn-primary " onclick="addToCart('<%= productData._id %>')">Add to cart</button>
+                                            <button class="btn btn-primary "
+                                                onclick="addToCart('<%= productData._id %>')">Add to cart</button>
                                         </div>
                                     </div>
 
@@ -417,6 +418,18 @@
                 <script src="/userAssets/js/custom_2.js"></script>
                 <script src="../../../mapbox-gl-js/v0.47.0/mapbox-gl.js"></script>
                 <!--main js file end-->
+                <script>
+                    var right = document.getElementById('rightdiv').style.height;
+                    var left = document.getElementById('leftdiv').style.height;
+                    var rightHeightValue = parseInt(right, 10);
+                    var leftHeightValue = parseInt(left, 10);
+                    if (leftHeightValue > rightHeightValue) {
+                        document.getElementById('rightdiv').style.height = left;
+                    }
+                    else {
+                        document.getElementById('leftdiv').style.height = right;
+                    }
+                </script>
 
     </body>
 

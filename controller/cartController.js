@@ -120,6 +120,31 @@ const loadCart = async (req, res) => {
   }
 };
 
+const loadSuccess = async (req, res) => {
+  try {
+    const cartData = await Cart.findOne({
+      userId: req.session.user_id,
+    }).populate("products.productId");
+    let totalAmount;
+    if (cartData) {
+      const subTotal = await Cart.aggregate([
+        { $match: { userId: req.session.user_id } },
+        { $unwind: "$products" },
+        { $group: { _id: null, total: { $sum: "$products.totalPrice" } } },
+        { $project: { _id: 0 } },
+      ]);
+      totalAmount = subTotal.length > 0 ? subTotal[0].total : 0;
+    }
+    res.render("cart", {
+      session: req.session.user_id,
+      cart: cartData ? cartData.products : [],
+      totalAmount,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const deleteProductFromCart = async (req, res) => {
   try {
     if (!req.session.user_id) {
@@ -269,4 +294,5 @@ module.exports = {
   deleteProductFromCart,
   changeProductCount,
   placeOrder,
+  loadSuccess
 };
