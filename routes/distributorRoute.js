@@ -16,7 +16,7 @@ distributorRoute.get("/register", auth.distributerLogout,authUserController.load
 distributorRoute.post("/register", authUserController.insertDistributor);
 distributorRoute.get("/home", auth.distributerLogin,authUserController.loadDashboard);
 distributorRoute.get("/logout", auth.distributerLogin,authUserController.distrubuterLogout);
-distributorRoute.get("/order", auth.distributerLogin,authUserController.distrubuterLogout);
+distributorRoute.get("/order", auth.distributerLogin,distributorController.loadOrderDetails);
 
 //====================== ADMIN PRODUCT SECTION ==================== //
 distributorRoute.get("/productlist", auth.distributerLogin,productController.loadProduct);
