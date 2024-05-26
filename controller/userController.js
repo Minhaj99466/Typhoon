@@ -1,5 +1,6 @@
 const productModel = require("../model/productModal");
 const Cart = require("../model/cartModel");
+const Order = require("../model/orderModel")
 
 //=============================   ABOUT PAGE LOAD  ========================//
 
@@ -31,7 +32,12 @@ const loadCheckOut = async (req, res, next) => {
 
 const loadOrder = async (req, res, next) => {
   try {
-    res.render("order", { session: req.session.user_id });
+    const orderData = await Order.findOne({
+      userId: req.session.user_id,
+    }).populate("products.productId");
+
+    console.log(orderData.products);
+    res.render("order", { session: req.session.user_id,order: orderData ? orderData.products : [] });
   } catch {
     next(error);
   }
