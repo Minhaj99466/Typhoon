@@ -230,11 +230,11 @@ const placeOrder = async (req, res, next) => {
   try {
     const {firstName,phone,email,country,city,address,postcode,totalAmount,paymentMethod} = req.body
     const cartData = await Cart.findOne({ userId: req.session.user_id});
-
+    
     if (!cartData) {
       return res.status(400).json({ error: "Cart is empty" });
     }
-
+    
     const products = cartData.products;
 
     // Build delivery address object

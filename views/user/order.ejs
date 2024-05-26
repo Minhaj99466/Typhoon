@@ -86,33 +86,40 @@
                       </tr>
                     </thead>
 
-                    <% if(order.length> 0){
-                      for(let i = 0; i< order.length;i++ ){ %>
-                        <tbody>
+                    <tbody>
+                    <% if(order.length > 0){ %>
+                      <% console.log(order) %>
+                      <% order.forEach((order, i) => { %>
                           <tr>
-                            <td>1</td>
+                            <td> <%=i+1%></td>
                             <td>
                               <div class="table_cart_img">
                                 <figure>
-                                  <img src="/userAssets/images//cart_1.png" alt="" />
+                                  <img src="/distributorAssets/distributorImage/<%=order.productId.image[0]%>" alt="" />
                                 </figure>
                               </div>
                               <div class="table_cart_cntnt">
                                 <h1>
-                                  <%=order[0].paymentMethod%>
+                                  <%=order.productId.productName%>
                                 </h1>
-                                <p>color : black</p>
+                                <p> <%=order.productId.modelNumber%></p>
+                             
                               </div>
                             </td>
                             <td></td>
-                            <td class="cart_page_price">$199.00</td>
+                            <td class="cart_page_price">$<%=order.productId.price%></td>
 
-                            <td class="cart_page_totl">5.00</td>
-                            <td class="cart_page_totl">$299.00</td>
+                            <td class="cart_page_totl"><%=order.count%></td>
+                            <td class="cart_page_totl">$ <%=order.totalPrice%></td>
 
                           </tr>
+                          <% }) %>
+                          <% } else { %>
+                            <tr>
+                              <td colspan="7" class="text-center">You Have No Orders</td>
+                            </tr>
+                          <% } %>
                         </tbody>
-                        <% } } %>
                   </table>
                 </div>
 

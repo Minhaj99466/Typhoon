@@ -50,10 +50,6 @@ const orderSchema = new mongoose.Schema({
       type: Number,
       required: true,
     },
-    productName: {
-      type: String,
-      required: true,
-    },
     totalPrice: {
       type: Number,
       default: 0,
