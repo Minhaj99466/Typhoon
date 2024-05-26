@@ -1,6 +1,7 @@
 const User = require("../model/userModel");
-const Product = require("../model/productModal"); // Updated the correct import
-const Cart = require("../model/cartModel"); // Updated the correct import
+const Product = require("../model/productModal");
+const Cart = require("../model/cartModel"); 
+const Order = require("../model/orderModel")
 
 const getUserById = async (userId) => {
   return await User.findOne({ _id: userId });
@@ -200,13 +201,67 @@ const changeProductCount = async (req, res, next) => {
   }
 };
 
-const placeOrder = async(req,res) =>{
-    try{
-        console.log(req.body,"method");
-    }catch(err){
-        console.log(err)
+const placeOrder = async (req, res, next) => {
+  try {
+    const {firstName,phone,email,country,city,address,postcode,totalAmount,paymentMethod} = req.body
+    const cartData = await Cart.findOne({ userId: req.session.user_id});
+
+    if (!cartData) {
+      return res.status(400).json({ error: "Cart is empty" });
     }
-}
+
+    const products = cartData.products;
+
+    // Build delivery address object
+    const deliveryAddress = {
+      name: firstName,
+      number: phone,
+      email: email,
+      country: country,
+      city: city,
+      address:address,
+      postcode: postcode,
+    };
+
+    // Status is directly set to 'placed' for COD
+    const status = "placed";
+    const order = new Order({
+      deliveryAddress: deliveryAddress,
+      userId: req.session.user_id,
+      paymentMethod: paymentMethod,
+      products: products.map(product => ({
+        productId: product.productId,
+        count: product.count,
+        productPrice: product.productPrice,
+        totalPrice: product.totalPrice,
+        status: status,
+      })),
+      totalAmount: totalAmount,
+      date: new Date(),
+      status: status,
+    });
+
+    const orderData = await order.save();
+
+    if (orderData) {
+      await Cart.deleteOne({ userId: req.session.user_id});
+
+      for (let i = 0; i < products.length; i++) {
+        const pro = products[i].productId;
+        const count = products[i].count;
+        await Product.findByIdAndUpdate(pro, { $inc: { quantity: -count } });
+      }
+
+      res.json({ codsuccess: true, orderId: orderData._id });
+    } else {
+      res.redirect('/');
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+
 
 module.exports = {
   addToCart,

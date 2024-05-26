@@ -66,7 +66,7 @@
 
           <!--Checkout Details-->
           <div class="checkout-form">
-            <form action="/placeorder" method="post">
+            <form id="checkoutForm">
               <div class="row clearfix">
                 <!--Column-->
                 <div class="column col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -96,13 +96,8 @@
 
                     <!--Form Group-->
                     <div class="form-group col-md-6 col-sm-12 col-xs-12 pr-0">
-                      <div class="field-label">Country</div>
-                      <select required>
-                        <option>Pakistan</option>
-                        <option>India</option>
-                        <option>Australia</option>
-                        <option>Usa</option>
-                      </select>
+                      <div  class="field-label">Country</div>
+                      <input type="text" name="country" value="" placeholder="" required/>
                     </div>
 
 
@@ -161,19 +156,11 @@
                           <h1> PAYEMENT</h1>
                         </div>
                         <ul>
-
                           <li>
                             <div class="radio-option">
-                              <input type="radio" name="payment-group" value="check" id="payment-1" required />
-                              <label for="payment-1"><strong>Check Payments</strong></label>
-                            </div>
-                          </li>
-
-                          <li>
-                            <div class="radio-option">
-                              <input type="radio" name="payment-group" value="cod" id="payment-3" required />
+                              <input type="radio"  name="payment-group"  value="cod" id="payment-3" required />
                               <label for="payment-3"><strong>Cash on Delivery</strong></label>
-                            </div>
+                            </div> 
                           </li>
                           <li>
                             <div class="radio-option">
@@ -211,7 +198,37 @@
 
           <!-- sw footer section end-->
           <!--main js files-->
-
+          <script>
+            $("#checkoutForm").submit((e) => {
+              e.preventDefault();
+          
+              // Gather form data
+              const formData = {
+                firstName: $("input[name=name]").val(),
+                phone: $("input[name=number]").val(),
+                email: $("input[name=email]").val(),
+                country: $("input[name=country]").val(),
+                address: $("input[name=address]").val(),
+                city: $("input[name=city]").val(),
+                postcode: $("input[name=postcode]").val(),
+                totalAmount: "<%= totalAmount %>",  // Assuming totalAmount is available in the template context
+                paymentMethod: $("input[name=payment-group]:checked").val()
+              };
+          
+              $.ajax({
+                url: "/checkout",
+                method: "post",
+                data: formData,
+                success: (response) => {
+                  if (response.codsuccess === true) {
+                    const id = response.orderId;
+                    location.href = `/orderPlace/${id}`;       
+                  }
+                }
+              });
+            });
+          </script>
+          
           <script src="/userAssets/js/jquery_min.js"></script>
           <script src="/userAssets/js/materialize.min.js"></script>
           <script src="/userAssets/js/bootstrap.min.js"></script>
