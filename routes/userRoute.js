@@ -32,6 +32,6 @@ userRoute.post("/addtocart", cartController.addToCart)
 userRoute.get("/cart",auth.userIsLogin,cartController.loadCart)
 userRoute.post("/deletecart",cartController.deleteProductFromCart)
 userRoute.post("/changeQuantity",cartController.changeProductCount)
-userRoute.post("/placeorder",cartController.placeOrder)
+userRoute.post("/checkout",cartController.placeOrder)
 
 module.exports = userRoute;
