@@ -36,7 +36,6 @@ const loadOrder = async (req, res, next) => {
       userId: req.session.user_id,
     }).populate("products.productId");
 
-    console.log(orderData.products);
     res.render("order", { session: req.session.user_id,order: orderData ? orderData.products : [] });
   } catch {
     next(error);
