@@ -36,8 +36,27 @@ const loadOrder = async (req, res, next) => {
       userId: req.session.user_id,
     }).populate("products.productId");
 
+<<<<<<< HEAD
     res.render("order", { session: req.session.user_id,order: orderData ? orderData.products : [] });
   } catch {
+=======
+    console.log(orderData, 'aaaaaaaa');
+    
+    if (orderData) {
+      res.render("order", {
+        session: req.session.user_id,
+        products: orderData.products,
+        paymentMethod: orderData.paymentMethod
+      });
+    } else {
+      res.render("order", {
+        session: req.session.user_id,
+        products: [],
+        paymentMethod: ""
+      });
+    }
+  } catch (error) {
+>>>>>>> afdac7a20a4709fc1a336addcda98bc542bc6113
     next(error);
   }
 };
@@ -51,6 +70,7 @@ const loadSuccess = async (req, res, next) => {
     next(error);
   }
 };
+
 
 //=============================   CONTACT-US PAGE LOAD  ========================//
 
