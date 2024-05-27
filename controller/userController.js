@@ -36,12 +36,26 @@ const loadOrder = async (req, res, next) => {
       userId: req.session.user_id,
     }).populate("products.productId");
 
-    console.log(orderData.products);
-    res.render("order", { session: req.session.user_id,order: orderData ? orderData.products : [] });
-  } catch {
+    console.log(orderData, 'aaaaaaaa');
+    
+    if (orderData) {
+      res.render("order", {
+        session: req.session.user_id,
+        products: orderData.products,
+        paymentMethod: orderData.paymentMethod
+      });
+    } else {
+      res.render("order", {
+        session: req.session.user_id,
+        products: [],
+        paymentMethod: ""
+      });
+    }
+  } catch (error) {
     next(error);
   }
 };
+
 
 //=============================   CONTACT-US PAGE LOAD  ========================//
 
