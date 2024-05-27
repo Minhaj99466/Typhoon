@@ -25,7 +25,7 @@ const getOrCreateCart = async (userId, userName, productId) => {
   );
 };
 
-const updateCartProduct = async (cart, productId, totalPrice) => {
+const updateCartProduct = async (cart, productId, totalPrice, productprice) => {
   return await Cart.updateOne(
     { userId: cart.userId, "products.productId": productId },
     {
@@ -33,20 +33,13 @@ const updateCartProduct = async (cart, productId, totalPrice) => {
         "products.$.count": 1,
         "products.$.totalPrice": totalPrice,
       },
+      $set:{
+        "products.$.productPrice":productprice,
+      }
     }
   );
 };
 
-const addNewProductToCart = async (cart, productId, productPrice) => {
-  const totalPrice = productPrice;
-  cart.products.push({
-    productId: productId,
-    productPrice: productPrice,
-    totalPrice: totalPrice,
-    count: 1,
-  });
-  await cart.save();
-};
 
 const addToCart = async (req, res, next) => {
   try {
@@ -84,9 +77,7 @@ const addToCart = async (req, res, next) => {
 
     if (cartProduct) {
       const totalPrice = productData.price;
-      await updateCartProduct(cartData, productId, totalPrice);
-    } else {
-      await addNewProductToCart(cartData, productId, productData.price);
+      await updateCartProduct(cartData, productId, totalPrice, productData.price);
     }
 
     return res.json({ success: true });
