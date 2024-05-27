@@ -120,7 +120,7 @@ const loadCart = async (req, res) => {
   }
 };
 
-const loadSuccess = async (req, res) => {
+const postOrder = async (req, res) => {
   try {
     const cartData = await Cart.findOne({
       userId: req.session.user_id,
@@ -294,5 +294,6 @@ module.exports = {
   deleteProductFromCart,
   changeProductCount,
   placeOrder,
-  loadSuccess
+  postOrder
+ 
 };

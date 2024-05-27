@@ -41,6 +41,16 @@ const loadOrder = async (req, res, next) => {
     next(error);
   }
 };
+//=============================   ORDER PAGE LOAD  ========================//
+
+const loadSuccess = async (req, res, next) => {
+  try {
+   
+    res.render("orderplace", { session: req.session.user_id });
+  } catch {
+    next(error);
+  }
+};
 
 //=============================   CONTACT-US PAGE LOAD  ========================//
 
@@ -108,5 +118,6 @@ module.exports = {
   loadService,
   loadShop,
   loadSingle,
-  loadOrder
+  loadOrder,
+  loadSuccess
 };

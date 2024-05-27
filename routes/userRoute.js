@@ -19,6 +19,7 @@ userRoute.post("/login", authUserController.verifyLogin);
 userRoute.get("/logout", auth.userIsLogin, authUserController.userLogout);
 
 userRoute.get("/order", auth.userIsLogin,userController.loadOrder);
+userRoute.get("/success", auth.userIsLogin,userController.loadSuccess);
 userRoute.get("/about", auth.userIsLogin,userController.loadAbout);
 userRoute.get("/checkout",auth.userIsLogin, userController.loadCheckOut);
 userRoute.get("/contact", auth.userIsLogin,userController.loadContactUs);
@@ -33,6 +34,6 @@ userRoute.get("/cart",auth.userIsLogin,cartController.loadCart)
 userRoute.post("/deletecart",cartController.deleteProductFromCart)
 userRoute.post("/changeQuantity",cartController.changeProductCount)
 userRoute.post("/checkout",cartController.placeOrder)
-userRoute.post("/orderplace",cartController.loadSuccess)
+userRoute.post("/orderplace",cartController.postOrder)
 
 module.exports = userRoute;

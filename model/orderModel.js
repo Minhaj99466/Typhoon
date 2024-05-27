@@ -48,11 +48,11 @@ const orderSchema = new mongoose.Schema({
     },
     productPrice: {
       type: Number,
-      required: true,
+      required: false,
     },
     totalPrice: {
       type: Number,
-      default: 0,
+      default:0
     },
     status: {
       type: String,
