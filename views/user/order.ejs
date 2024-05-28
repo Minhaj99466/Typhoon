@@ -75,26 +75,32 @@
                            </tr>
                         </thead>
                         <tbody>
-                           <% products.forEach((product, index) => { %>
+                           <% if(order) { %>
+                              <% order.products.forEach((product, index) => { %>
+                                 <tr>
+                                    <td><%= index + 1 %></td>
+                                    <td>
+                                       <div class="table_cart_img">
+                                          <figure>
+                                             <img src="/distributorAssets/distributorImage/<%= product.productId.image[0] %>" alt="<%= product.productId.productName %>" />
+                                          </figure>
+                                       </div>
+                                       <div class="table_cart_cntnt">
+                                          <h1><%= product.productId.productName %></h1>
+                                          <p>Model: <%= product.productId.modelNumber %></p>
+                                          <p>Brand: <%= product.productId.brand %></p>
+                                       </div>
+                                    </td>
+                                    <td><%= order.paymentMethod %></td>
+                                    <td class="cart_page_totl"><%= product.count %></td>
+                                    <td class="cart_page_totl">$<%= product.totalPrice %></td>
+                                 </tr>
+                              <% }) %>  
+                           <% } else { %>
                               <tr>
-                                 <td><%= index + 1 %></td>
-                                 <td>
-                                    <div class="table_cart_img">
-                                       <figure>
-                                          <img src="/distributorAssets/distributorImage/<%= product.productId.image[0] %>" alt="<%= product.products.productName %>" />
-                                       </figure>
-                                    </div>
-                                    <div class="table_cart_cntnt">
-                                       <h1><%= product.productId.productName %></h1>
-                                       <p>Model: <%= product.productId.modelNumber %></p>
-                                       <p>Brand: <%= product.productId.brand %></p>
-                                    </div>
-                                 </td>
-                                 <td><%= paymentMethod %></td>
-                                 <td class="cart_page_totl"><%= product.count %></td>
-                                 <td class="cart_page_totl">$<%= product.totalPrice %></td>
+                                 <td colspan="5">No orders found</td>
                               </tr>
-                           <% }) %>
+                           <% } %>  
                         </tbody>
                      </table>
                   </div>
