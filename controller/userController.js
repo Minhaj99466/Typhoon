@@ -32,23 +32,16 @@ const loadCheckOut = async (req, res, next) => {
 
 const loadOrder = async (req, res, next) => {
   try {
-    const orderData = await Order.findOne({
-      userId: req.session.user_id,
-    }).populate("products.productId");
+    const orderData = await Order.aggregate([{$match:{userId:req.session.user_id}},{$unwind:"$products"}])
+
+    console.log(orderData);
 
     if (orderData) {
       res.render("order", {
         session: req.session.user_id,
-        products: orderData.products,
-        paymentMethod: orderData.paymentMethod
+        products: orderData ? orderData : [],
       });
-    } else {
-      res.render("order", {
-        session: req.session.user_id,
-        products: [],
-        paymentMethod: ""
-      });
-    }
+    } 
   } catch (error) {
     next(error);
   }
