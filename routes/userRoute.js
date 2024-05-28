@@ -9,8 +9,9 @@ userRoute.set("view engine", "ejs");
 userRoute.set("views", "./views/user");
 
 //======================= USER HOME SECTION ============================================= //
-userRoute.get("/", auth.userIsLogin, authUserController.loadHome);
-userRoute.get("/landing", authUserController.loadLanding);
+userRoute.get("/home", auth.userIsLogin, authUserController.loadHome);
+userRoute.get("/",auth.userIsLogout, authUserController.loadLanding);
+userRoute.get("/landing",auth.userIsLogout, authUserController.loadLanding);
 userRoute.get("/home", auth.userIsLogin, authUserController.loadHome);
 userRoute.post("/register", authUserController.insertUser);
 userRoute.get("/register", auth.userIsLogout, authUserController.loadRegister);
