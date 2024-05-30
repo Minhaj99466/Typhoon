@@ -41,7 +41,7 @@
                         </li>
                         <li class="caret_btn">
                             <a href="/cart"><i class="fa fa-shopping-cart "></i></a>
-                        
+
                         </li>
 
                         <!-- Menu -->
@@ -62,14 +62,15 @@
                                     <a class="dropdown-toggle hvr-float-shadow active waves-effect waves-light"
                                         data-toggle="dropdown" href="javascript:;"><i class="fa fa-ellipsis-v"></i></a>
                                     <ul class="dropdown-menu tc_menu_fixed_border">
-                                       
-                                        <% if(session == null){ %>
+
+                                        <% if(session==null){ %>
                                             <li class="dropdown_hover"><a href="/register">Register</a></li>
                                             <li class="dropdown_hover"><a href="/login">Login</a></li>
-                                         <% }else{ %>
-                                             <li><a href="/logout"><i class="icon-user">logout</a></i>
-                                         <% } %>
-                                        <li class="dropdown_hover hidden-lg"><a href="/contact">Free Quote</a></li>
+                                            <% }else{ %>
+                                                <li><a href="/logout"><i class="icon-user">logout</a></i>
+                                                    <% } %>
+                                                <li class="dropdown_hover hidden-lg"><a href="/contact">Free Quote</a>
+                                                </li>
                                     </ul>
                                 </li>
                             </ul>
@@ -90,15 +91,13 @@
                             <div class="mobile-menu">
                                 <nav>
                                     <ul class="nav">
-                                        <li><a href="/">Home</a>
+                                        <li><a href="/home">Home</a>
 
                                         </li>
                                         <li><a href="about">about us</a>
                                         </li>
                                         <li><a href="service">services</a>
                                         </li>
-
-
                                         <li><a href="shop" title="">shop</a>
 
                                         </li>
@@ -178,7 +177,7 @@
     <div class="header_btn">
         <ul>
             <li>
-                <a href="contact"  class="waves-effect waves-light waves-ripple">free quote</a>
+                <a href="contact" class="waves-effect waves-light waves-ripple">free quote</a>
             </li>
         </ul>
     </div>

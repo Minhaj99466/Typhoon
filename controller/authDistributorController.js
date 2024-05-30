@@ -65,7 +65,8 @@ const insertDistributor = async (req, res, next) => {
 
 const loadDashboard = async (req, res, next) => {
   try {
-    res.render("home");
+    const adminData = req.adminData || {};
+    res.render("home",{admin: adminData});
   } catch (error) {
     next(error);
   }

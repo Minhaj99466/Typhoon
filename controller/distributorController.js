@@ -4,6 +4,7 @@ const { ObjectId } = mongoose.Types;
 
 const loadOrderDetails = async(req,res) =>{
     try {
+      const adminData = req.adminData || {};
         const orderData = await Product.aggregate([
             {
               $match: {
@@ -25,7 +26,7 @@ const loadOrderDetails = async(req,res) =>{
             },
           ]);
           console.log(orderData);
-        res.render("order",{orderData})
+        res.render("order",{orderData,  admin: adminData})
     } catch (error) {
         console.log(error)
     }

@@ -1,7 +1,7 @@
 const User = require("../model/userModel");
 const Product = require("../model/productModal");
-const Cart = require("../model/cartModel"); 
-const Order = require("../model/orderModel")
+const Cart = require("../model/cartModel");
+const Order = require("../model/orderModel");
 
 const getUserById = async (userId) => {
   return await User.findOne({ _id: userId });
@@ -33,13 +33,12 @@ const updateCartProduct = async (cart, productId, totalPrice, productprice) => {
         "products.$.count": 1,
         "products.$.totalPrice": totalPrice,
       },
-      $set:{
-        "products.$.productPrice":productprice,
-      }
+      $set: {
+        "products.$.productPrice": productprice,
+      },
     }
   );
 };
-
 
 const addToCart = async (req, res, next) => {
   try {
@@ -77,7 +76,12 @@ const addToCart = async (req, res, next) => {
 
     if (cartProduct) {
       const totalPrice = productData.price;
-      await updateCartProduct(cartData, productId, totalPrice, productData.price);
+      await updateCartProduct(
+        cartData,
+        productId,
+        totalPrice,
+        productData.price
+      );
     }
 
     return res.json({ success: true });
@@ -88,6 +92,7 @@ const addToCart = async (req, res, next) => {
 
 const loadCart = async (req, res) => {
   try {
+    const adminData = req.adminData || {};
     const cartData = await Cart.findOne({
       userId: req.session.user_id,
     }).populate("products.productId");
@@ -105,6 +110,7 @@ const loadCart = async (req, res) => {
       session: req.session.user_id,
       cart: cartData ? cartData.products : [],
       totalAmount,
+      admin: adminData,
     });
   } catch (err) {
     console.log(err);
@@ -113,6 +119,7 @@ const loadCart = async (req, res) => {
 
 const postOrder = async (req, res) => {
   try {
+    const adminData = req.adminData || {};
     const cartData = await Cart.findOne({
       userId: req.session.user_id,
     }).populate("products.productId");
@@ -130,6 +137,7 @@ const postOrder = async (req, res) => {
       session: req.session.user_id,
       cart: cartData ? cartData.products : [],
       totalAmount,
+       admin: adminData
     });
   } catch (err) {
     console.log(err);
@@ -219,13 +227,23 @@ const changeProductCount = async (req, res, next) => {
 
 const placeOrder = async (req, res, next) => {
   try {
-    const {firstName,phone,email,country,city,address,postcode,totalAmount,paymentMethod} = req.body
-    const cartData = await Cart.findOne({ userId: req.session.user_id});
-    
+    const {
+      firstName,
+      phone,
+      email,
+      country,
+      city,
+      address,
+      postcode,
+      totalAmount,
+      paymentMethod,
+    } = req.body;
+    const cartData = await Cart.findOne({ userId: req.session.user_id });
+
     if (!cartData) {
       return res.status(400).json({ error: "Cart is empty" });
     }
-    
+
     const products = cartData.products;
 
     // Build delivery address object
@@ -235,7 +253,7 @@ const placeOrder = async (req, res, next) => {
       email: email,
       country: country,
       city: city,
-      address:address,
+      address: address,
       postcode: postcode,
     };
 
@@ -245,7 +263,7 @@ const placeOrder = async (req, res, next) => {
       deliveryAddress: deliveryAddress,
       userId: req.session.user_id,
       paymentMethod: paymentMethod,
-      products: products.map(product => ({
+      products: products.map((product) => ({
         productId: product.productId,
         count: product.count,
         productPrice: product.productPrice,
@@ -260,7 +278,7 @@ const placeOrder = async (req, res, next) => {
     const orderData = await order.save();
 
     if (orderData) {
-      await Cart.deleteOne({ userId: req.session.user_id});
+      await Cart.deleteOne({ userId: req.session.user_id });
 
       for (let i = 0; i < products.length; i++) {
         const pro = products[i].productId;
@@ -270,14 +288,12 @@ const placeOrder = async (req, res, next) => {
 
       res.json({ codsuccess: true, orderId: orderData._id });
     } else {
-      res.redirect('/');
+      res.redirect("/");
     }
   } catch (err) {
     next(err);
   }
 };
-
-
 
 module.exports = {
   addToCart,
@@ -285,5 +301,5 @@ module.exports = {
   deleteProductFromCart,
   changeProductCount,
   placeOrder,
-  postOrder
+  postOrder,
 };

@@ -1,7 +1,15 @@
+const Distributor = require("../model/distributorModel");
+
 const distributerLogin = async (req, res, next) => {
   try {
     if (req.session.distributer_id) {
-      next();
+      const adminData = await Distributor.findById({ _id: req.session.distributer_id});
+      if (adminData) {
+        req.adminData = adminData; // Store adminData in req object
+        next();
+      } else {
+        res.redirect("/distributor");
+      }
     } else {
       res.redirect("/distributor");
     }

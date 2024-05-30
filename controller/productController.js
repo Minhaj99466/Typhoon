@@ -4,8 +4,9 @@ const cartModel    = require("../model/cartModel")
 //===================== LOAD PRODUCT =======================//
 const loadProduct = async (req, res, next) => {
   try {
+    const adminData = req.adminData || {};
     const productData = await productModel.find({distributor_id:req.session.distributer_id,is_delete:false})
-    res.render("productList",{productData});
+    res.render("productList",{productData,  admin: adminData});
   } catch (error) {
     next(error);
   }
@@ -24,7 +25,7 @@ const insertProduct = async (req, res, next) => {
       discription,
     } = req.body;
     if (!productname || !price || !brand || !modelnumber || !quantity || !warranty || !discription) {
-      return res.render('errorPage', { message: 'All fields are required.' });
+      return res.render('errorPage', { message: 'All fields are required.' ,  admin: adminData});
     }
     const image = [];
     if (req.files && req.files.length > 0) {

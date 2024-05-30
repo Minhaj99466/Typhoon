@@ -7,7 +7,7 @@ const Order = require("../model/orderModel")
 const loadAbout = async (req, res, next) => {
   try {
     res.render("about_us", { session: req.session.user_id });
-  } catch {
+  } catch (error) {
     next(error);
   }
 };
@@ -24,7 +24,7 @@ const loadCheckOut = async (req, res, next) => {
     ]);
     totalAmount = subTotal.length > 0 ? subTotal[0].total : 0;
     res.render("checkout", { session: req.session.user_id, totalAmount });
-  } catch {
+  } catch (error) {
     next(error);
   }
 };
@@ -52,7 +52,7 @@ const loadSuccess = async (req, res, next) => {
   try {
    
     res.render("orderplace", { session: req.session.user_id });
-  } catch {
+  } catch (error) {
     next(error);
   }
 };
@@ -63,7 +63,7 @@ const loadSuccess = async (req, res, next) => {
 const loadContactUs = async (req, res, next) => {
   try {
     res.render("contact_us", { session: req.session.user_id });
-  } catch {
+  } catch (error) {
     next(error);
   }
 };
@@ -73,7 +73,7 @@ const loadContactUs = async (req, res, next) => {
 const loadError = async (req, res, next) => {
   try {
     res.render("error", { session: req.session.user_id });
-  } catch {
+  } catch (error) {
     next(error);
   }
 };
@@ -83,7 +83,7 @@ const loadError = async (req, res, next) => {
 const loadService = async (req, res, next) => {
   try {
     res.render("services", { session: req.session.user_id });
-  } catch {
+  } catch (error) {
     next(error);
   }
 };
@@ -97,7 +97,7 @@ const loadShop = async (req, res, next) => {
       is_delete: false,
     });
     res.render("shop_sidebar", { session: req.session.user_id, productData });
-  } catch {
+  } catch (error){
     next(error);
   }
 };

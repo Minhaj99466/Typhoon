@@ -54,7 +54,9 @@ const adminLogout = async (req, res, next) => {
 
 const loadDashboard = async (req, res, next) => {
   try {
-    res.render("home");
+    const adminData = req.adminData || {};  // Retrieve adminData from req object
+    // console.log(adminData);
+    res.render("home", { admin: adminData });
   } catch (error) {
     next(error);
   }
@@ -64,8 +66,9 @@ const loadDashboard = async (req, res, next) => {
 
 const userList = async (req, res, next) => {
   try {
+    const adminData = req.adminData || {};
     const userData = await userModel.find({ is_admin: 0 });
-    res.render("userList", { userData });
+    res.render("userList", { userData ,  admin: adminData });
   } catch (error) {
     next(error);
   }
@@ -91,8 +94,9 @@ const userUnblock = async (req,res,next) => {
 
 const distributerList = async(req,res,next) =>{
   try{
+    const adminData = req.adminData || {};
     const distributerData = await distributerModel.find({ is_verified: true});
-    res.render("distributerList", { distributerData });
+    res.render("distributerList", { distributerData,  admin: adminData });
   }catch(err){
     console.log(err)
   }
@@ -118,8 +122,9 @@ const distributerUnblock = async(req,res,next) =>{
 
 const loadProductApprovePage = async (req,res) =>{
   try{
+    const adminData = req.adminData || {};
     const productData = await productModel.find({action:"pendding",is_delete:false}).populate("distributor_id")
-    res.render("productApprove",{productData})
+    res.render("productApprove",{productData,  admin: adminData})
   }catch(err){
     console.log(err)
   }
@@ -128,7 +133,7 @@ const loadProductApprovePage = async (req,res) =>{
 const productDetails = async (req,res) =>{
   try{
     const productData = await productModel.findOne({_id:req.params.id}).populate("distributor_id")
-    res.render("productDetails",{productData})
+    res.render("productDetails",{productData,  admin: adminData})
   }catch(err){
     console.log(err)
   }

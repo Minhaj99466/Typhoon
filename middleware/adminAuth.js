@@ -1,12 +1,21 @@
+const User = require("../model/userModel");
+
 const adminIsLogin = async (req, res, next) => {
   try {
     if (req.session.admin_id) {
-      next();
+      const adminData = await User.findById({ _id: req.session.admin_id });
+      if (adminData) {
+        req.adminData = adminData;  // Store adminData in req object
+        next();
+      } else {
+        res.redirect("/admin");
+      }
     } else {
       res.redirect("/admin");
     }
   } catch (error) {
     console.log(error.message);
+    next(error);
   }
 };
 
