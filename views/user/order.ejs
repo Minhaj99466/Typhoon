@@ -75,25 +75,25 @@
                            </tr>
                         </thead>
                         <tbody>
-                           <% if(order) { %>
-                              <% order.products.forEach((product, index) => { %>
+                           <% if(order.length>0) { %>
+                              <% order.forEach((product, index) => { %>
                                  <tr>
                                     <td><%= index + 1 %></td>
                                     <td>
                                        <div class="table_cart_img">
                                           <figure>
-                                             <img src="/distributorAssets/distributorImage/<%= product.productId.image[0] %>" alt="<%= product.productId.productName %>" />
+                                             <img src="/distributorAssets/distributorImage/<%= product.products[0].productId.image[0] %>" alt="<%= product.products[0].productId.productName %>" />
                                           </figure>
                                        </div>
                                        <div class="table_cart_cntnt">
-                                          <h1><%= product.productId.productName %></h1>
-                                          <p>Model: <%= product.productId.modelNumber %></p>
-                                          <p>Brand: <%= product.productId.brand %></p>
+                                          <h1><%= product.products[0].productId.productName %></h1>
+                                          <p>Model: <%= product.products[0].productId.modelNumber %></p>
+                                          <p>Brand: <%= product.products[0].productId.brand %></p>
                                        </div>
                                     </td>
-                                    <td><%= order.paymentMethod %></td>
-                                    <td class="cart_page_totl"><%= product.count %></td>
-                                    <td class="cart_page_totl">$<%= product.totalPrice %></td>
+                                    <td><%= product.paymentMethod %></td>
+                                    <td class="cart_page_totl"><%= product.products[0].count %></td>
+                                    <td class="cart_page_totl">$<%= product.totalAmount %></td>
                                  </tr>
                               <% }) %>  
                            <% } else { %>

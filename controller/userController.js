@@ -1,6 +1,6 @@
 const productModel = require("../model/productModal");
 const Cart = require("../model/cartModel");
-const Order = require("../model/orderModel")
+const Order = require("../model/orderModel");
 
 //=============================   ABOUT PAGE LOAD  ========================//
 
@@ -32,16 +32,16 @@ const loadCheckOut = async (req, res, next) => {
 
 const loadOrder = async (req, res, next) => {
   try {
-    
-    const orderData = await Order.findOne({userId:req.session.user_id}).populate('products.productId');
+    const orderData = await Order.find({
+      userId: req.session.user_id,
+    }).populate("products.productId");
 
-console.log(orderData);
     if (orderData) {
       res.render("order", {
         session: req.session.user_id,
         order: orderData ? orderData : [],
       });
-    } 
+    }
   } catch (error) {
     next(error);
   }
@@ -50,13 +50,11 @@ console.log(orderData);
 
 const loadSuccess = async (req, res, next) => {
   try {
-   
     res.render("orderplace", { session: req.session.user_id });
   } catch (error) {
     next(error);
   }
 };
-
 
 //=============================   CONTACT-US PAGE LOAD  ========================//
 
@@ -97,7 +95,7 @@ const loadShop = async (req, res, next) => {
       is_delete: false,
     });
     res.render("shop_sidebar", { session: req.session.user_id, productData });
-  } catch (error){
+  } catch (error) {
     next(error);
   }
 };
@@ -125,5 +123,5 @@ module.exports = {
   loadShop,
   loadSingle,
   loadOrder,
-  loadSuccess
+  loadSuccess,
 };
