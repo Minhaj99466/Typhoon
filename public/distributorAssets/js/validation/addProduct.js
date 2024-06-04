@@ -20,7 +20,7 @@ const discription_error = document.getElementById("discription-error");
 form.addEventListener("submit", (e) => {
     let pricePattern = /^(?:[1-9]\d{0,3}|[1-9]|0)$/;
     let quantityPattern = /^(?:[1-9]\d?|100)$/;
-    let warrantyPattern = /^(?:[1-9]\d?|15)$/;
+    let warrantyPattern = /^(?:[1-9]\d?|15)$/; 
     let minDescriptionLength = 150;
   //========== ProductName ==============//
 

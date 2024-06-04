@@ -34,8 +34,8 @@ const loadOrder = async (req, res, next) => {
   try {
     
     const orderData = await Order.findOne({userId:req.session.user_id}).populate('products.productId');
-    console.log(orderData.products);
 
+console.log(orderData);
     if (orderData) {
       res.render("order", {
         session: req.session.user_id,

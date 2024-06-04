@@ -55,7 +55,6 @@ const adminLogout = async (req, res, next) => {
 const loadDashboard = async (req, res, next) => {
   try {
     const adminData = req.adminData || {};  // Retrieve adminData from req object
-    // console.log(adminData);
     res.render("home", { admin: adminData });
   } catch (error) {
     next(error);
@@ -132,6 +131,7 @@ const loadProductApprovePage = async (req,res) =>{
 
 const productDetails = async (req,res) =>{
   try{
+    const adminData = req.adminData || {};
     const productData = await productModel.findOne({_id:req.params.id}).populate("distributor_id")
     res.render("productDetails",{productData,  admin: adminData})
   }catch(err){

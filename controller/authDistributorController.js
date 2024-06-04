@@ -21,7 +21,6 @@ const loadRegister = async (req, res, next) => {
 
 const insertDistributor = async (req, res, next) => {
   try {
-    console.log(req.body);
     const { distributer_name, licence_number, phonenumber, email, password } = req.body;
     if ( !distributer_name || !licence_number || !phonenumber || !email || !password) {
       return res.render("register", { message: "All fields are required" });
