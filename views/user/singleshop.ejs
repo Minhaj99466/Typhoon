@@ -310,26 +310,35 @@
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="sw_testimonials_slider">
                                     <div class="owl-carousel owl-theme">
-
-                                        <% if(ratingData.length > 0){
-                                            for(let i = 0; i< ratingData.length;i++ ){ %>
-                                        <div class="item">
-                                            <div class="row">
-                                               
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 hidden-xs">
-                                                    <div class="sw_testimonials_slider_box">
-                                                        <img src="/userAssets/images/testi_2.png" alt="Testimonial">
-                                                        <div class="sw_testimonials_slider_box_text">
-                                                            <p><%= ratingData[i].ReviewDescription %></p>
-                <h4><%= ratingData[i].Users.username %></h4>
-                                                            
+                                        <% if (ratingData.length > 0) { 
+                                            for (let i = 0; i < ratingData.length; i++) { %>
+                                            <div class="item">
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="sw_testimonials_slider_box">
+                                                            <!-- <img src="/userAssets/images/testi_2.png" alt="Testimonial"> -->
+                                                            <div class="sw_testimonials_slider_box_text">
+                                                                <p style="text-wrap: wrap;"><%= ratingData[i].ReviewDescription %></p>
+                                                                <h4><%= ratingData[i].Users.username %></h4>
+                                                       
+                                                            </div>
                                                         </div>
                                                     </div>
+                                                    <% if (i + 1 < ratingData.length) { %> <!-- Ensure there's a next item -->
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 hidden-xs">
+                                                        <div class="sw_testimonials_slider_box">
+                                                            <!-- <img src="/userAssets/images/testi_1.png" alt="Testimonial"> -->
+                                                            <div class="sw_testimonials_slider_box_text">
+                                                                <p style="text-wrap: wrap;"><%= ratingData[i + 1].ReviewDescription %></p>
+                                                                <h4><%= ratingData[i + 1].Users.username %></h4>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <% i++; } %> <!-- Skip next item since it's already used -->
                                                 </div>
                                             </div>
-                                        </div>
-                                        <% }
-                                } %>      
+                                        <% } } %>
                                     </div>
                                 </div>
                             </div>

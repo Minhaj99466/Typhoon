@@ -7339,3 +7339,13 @@ nav ul li:nth-child(9) > ul {
 .login_main_wrapper.res_main_wrapper {
   height: 100%;
 }
+.sw_testimonials_slider_box_text p {
+  word-wrap: break-word; /* Ensure long words break onto the next line */
+  overflow-wrap: break-word; /* Ensure text wraps within the box */
+  max-width: 100%; /* Ensure it doesn't exceed the width of its container */
+  white-space: normal; /* Prevent text from extending horizontally */
+}
+.sw_testimonials_slider_box_text {
+  max-width: 100%; /* Ensure it doesn't exceed the container width */
+  overflow: hidden; /* Hide overflowing text */
+}

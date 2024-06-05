@@ -110,7 +110,6 @@ const loadSingle = async (req, res, next) => {
       is_delete: false,
     });
     const ratingData = await Rating.find().populate("Users")
-    console.log(ratingData)
     res.render("singleshop", { session: req.session.user_id, productData ,ratingData});
   } catch (error) {
     next(error);
@@ -119,7 +118,6 @@ const loadSingle = async (req, res, next) => {
 
 const addRating = async(req,res,next) =>{
   try{
-    console.log(req.body)
     const rating = new Rating({
       ReviewDescription:req.body.description,
       Users:req.session.user_id,
