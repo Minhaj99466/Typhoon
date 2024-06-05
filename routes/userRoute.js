@@ -29,6 +29,7 @@ userRoute.get("/service", auth.userIsLogin,userController.loadService);
 
 userRoute.get("/shop",auth.userIsLogin, userController.loadShop);
 userRoute.get("/singleProduct/:id",auth.userIsLogin, userController.loadSingle);
+userRoute.post("/singleProduct",auth.userIsLogin, userController.addRating)
 
 userRoute.post("/addtocart", cartController.addToCart)
 userRoute.get("/cart",auth.userIsLogin,cartController.loadCart)

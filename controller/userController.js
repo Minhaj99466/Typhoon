@@ -1,6 +1,7 @@
 const productModel = require("../model/productModal");
 const Cart = require("../model/cartModel");
 const Order = require("../model/orderModel");
+const Rating = require("../model/ratingModel")
 
 //=============================   ABOUT PAGE LOAD  ========================//
 
@@ -108,11 +109,30 @@ const loadSingle = async (req, res, next) => {
       action: "approve",
       is_delete: false,
     });
-    res.render("singleshop", { session: req.session.user_id, productData });
+    const ratingData = await Rating.find().populate("Users")
+    console.log(ratingData)
+    res.render("singleshop", { session: req.session.user_id, productData ,ratingData});
   } catch (error) {
     next(error);
   }
 };
+
+const addRating = async(req,res,next) =>{
+  try{
+    console.log(req.body)
+    const rating = new Rating({
+      ReviewDescription:req.body.description,
+      Users:req.session.user_id,
+    })
+    ratingData = await rating.save()
+    if (ratingData) {
+      return res.status(200).json({ error: "Cart is empty" });
+    }
+    return res.status(400).json({ error: "Cart is empty" });
+  }catch(err){
+    next(err)
+  }
+}
 
 module.exports = {
   loadAbout,
@@ -124,4 +144,5 @@ module.exports = {
   loadSingle,
   loadOrder,
   loadSuccess,
+  addRating
 };

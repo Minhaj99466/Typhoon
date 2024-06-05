@@ -287,22 +287,20 @@
                                             <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-warning">Add Feedback</button>
                                           
                                             <div id="id01" class="w3-modal">
-                                                <form action="/singleProduct/:userId" id="form" method="post">
-                                              <div class="w3-modal-content">
-                                                <header class="w3-container w3-teal"> 
-                                                  <span onclick="document.getElementById('id01').style.display='none'" 
-                                                  class="w3-button w3-display-topright">&times;</span>
-                                                  <h2>Enter Your Feedback </h2>
-                                                </header>
-                                                <div class="w3-container">
-                                               
-                                                 <input/>
-                                                 <button>submit</button>
-                                                </div>
-                                                  <footer class="w3-container w3-teal ">
-                                                </footer>
-                                              </div>
-                                            </form>
+                                                <form id="feedbackForm" method="post">
+                                                    <div class="w3-modal-content">
+                                                      <header class="w3-container w3-teal"> 
+                                                        <span onclick="document.getElementById('id01').style.display='none'" 
+                                                        class="w3-button w3-display-topright">&times;</span>
+                                                        <h2>Enter Your Feedback</h2>
+                                                      </header>
+                                                      <div class="w3-container">
+                                                        <input name="description" id="description" required/>
+                                                        <button type="submit">Submit</button>
+                                                      </div>
+                                                      <footer class="w3-container w3-teal"></footer>
+                                                    </div>
+                                                  </form>
                                               
                                             </div>
                                           <!-- </div> -->
@@ -312,103 +310,26 @@
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="sw_testimonials_slider">
                                     <div class="owl-carousel owl-theme">
-                                        <div class="item">
-                                            <div class="row">
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                    <div class="sw_testimonials_slider_box">
-                                                        <img src="/userAssets/images/testi_2.png" alt="Testimonial">
-                                                        <div class="sw_testimonials_slider_box_text">
-                                                            <p>Donec quis magna sit amet risus vulputate set eget arcu
-                                                                Praesent sed
-                                                                molestie tortor ed ulla suscipit lectus. Lorem ipsum
-                                                                dolor sit amet.
-                                                            </p>
-                                                            <h4>Ajay S.</h4>
-                                                            <h6>(CEO Webstrot Pvt Ltd.)</h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 hidden-xs">
-                                                    <div class="sw_testimonials_slider_box">
-                                                        <img src="/userAssets/images/testi_1.png" alt="Testimonial">
-                                                        <div class="sw_testimonials_slider_box_text">
-                                                            <p>Donec quis magna sit amet risus vulputate set eget arcu
-                                                                Praesent sed
-                                                                molestie tortor ed ulla suscipit lectus. Lorem ipsum
-                                                                dolor sit amet.
-                                                            </p>
-                                                            <h4>Akshay H.</h4>
-                                                            <h6>(COO Webstrot Pvt Ltd.)</h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="row">
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 hidden-xs">
-                                                    <div class="sw_testimonials_slider_box">
-                                                        <img src="/userAssets/images/testi_2.png" alt="Testimonial">
-                                                        <div class="sw_testimonials_slider_box_text">
-                                                            <p>Donec quis magna sit amet risus vulputate set eget arcu
-                                                                Praesent sed
-                                                                molestie tortor ed ulla suscipit lectus. Lorem ipsum
-                                                                dolor sit amet.
-                                                            </p>
-                                                            <h4>Ajay S.</h4>
-                                                            <h6>(CEO Webstrot Pvt Ltd.)</h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                    <div class="sw_testimonials_slider_box">
-                                                        <img src="/userAssets/images/testi_1.png" alt="Testimonial">
-                                                        <div class="sw_testimonials_slider_box_text">
-                                                            <p>Donec quis magna sit amet risus vulputate set eget arcu
-                                                                Praesent sed
-                                                                molestie tortor ed ulla suscipit lectus. Lorem ipsum
-                                                                dolor sit amet.
-                                                            </p>
-                                                            <h4>Akshay H.</h4>
-                                                            <h6>(COO Webstrot Pvt Ltd.)</h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="row">
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  hidden-xs">
-                                                    <div class="sw_testimonials_slider_box">
-                                                        <img src="/userAssets/images/testi_2.png" alt="Testimonial">
-                                                        <div class="sw_testimonials_slider_box_text">
-                                                            <p>Donec quis magna sit amet risus vulputate set eget arcu
-                                                                Praesent sed
-                                                                molestie tortor ed ulla suscipit lectus. Lorem ipsum
-                                                                dolor sit amet.
-                                                            </p>
-                                                            <h4>Ajay S.</h4>
-                                                            <h6>(CEO Webstrot Pvt Ltd.)</h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                    <div class="sw_testimonials_slider_box">
-                                                        <img src="/userAssets/images/testi_1.png" alt="Testimonial">
-                                                        <div class="sw_testimonials_slider_box_text">
-                                                            <p>Donec quis magna sit amet risus vulputate set eget arcu
-                                                                Praesent sed
-                                                                molestie tortor ed ulla suscipit lectus. Lorem ipsum
-                                                                dolor sit amet.
-                                                            </p>
-                                                            <h4>Akshay H.</h4>
-                                                            <h6>(COO Webstrot Pvt Ltd.)</h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
 
+                                        <% if(ratingData.length > 0){
+                                            for(let i = 0; i< ratingData.length;i++ ){ %>
+                                        <div class="item">
+                                            <div class="row">
+                                               
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 hidden-xs">
+                                                    <div class="sw_testimonials_slider_box">
+                                                        <img src="/userAssets/images/testi_2.png" alt="Testimonial">
+                                                        <div class="sw_testimonials_slider_box_text">
+                                                            <p><%= ratingData[i].ReviewDescription %></p>
+                <h4><%= ratingData[i].Users.username %></h4>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <% }
+                                } %>      
                                     </div>
                                 </div>
                             </div>
@@ -419,12 +340,38 @@
 
                 <!--sw testimonial wrapper end-->
             </div>
+            
             <%- include('../userLayout/footer.ejs') %>
 
+            <script>
+                document.getElementById('feedbackForm').addEventListener('submit', async function(event) {
+                  event.preventDefault();
+                  
+                  const description = document.getElementById('description').value;
+                  
+                  try {
+                    const response = await fetch('/singleProduct', {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type': 'application/json'
+                      },
+                      body: JSON.stringify({ description })
+                    });
+                
+                    const result = await response.json();
+                
+                    if (response.ok) {
+                      alert('Rating submitted successfully');
+                      window.location.reload();
+                    } else {
+                      alert(`Error: ${result.error}`);
+                    }
+                  } catch (error) {
+                    console.error('Error:', error);
+                  }
+                })
 
-
-
-
+</script>
                 <!--main js files-->
 
                 <script src="/userAssets/js/jquery_min.js"></script>
