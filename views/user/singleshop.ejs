@@ -266,13 +266,14 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <!--sw newsletter wrapper end-->
                 <!-- sw leads section end-->
                 <!--sw testimonial wrapper start-->
                 <div class="sw_testimonial_wrapper">
+                    
                     <div class="container">
+                        <div class="hhh">
                         <div class="row">
                             <div class="col-lg-6 col-md-12 col-xs-12 col-sm-12 col-lg-offset-3">
                                 <div class="sw_left_heading_wraper dark_heading_center">
@@ -281,7 +282,32 @@
                                     <p>Donec quis magna sit amet risus vulputate maximus eget eget arcu. Praesent sed
                                         molestie
                                         tortor. </p>
+                                        <!-- <div class="w3-container"> -->
+
+                                            <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-warning">Add Feedback</button>
+                                          
+                                            <div id="id01" class="w3-modal">
+                                                <form action="/singleProduct/:userId" id="form" method="post">
+                                              <div class="w3-modal-content">
+                                                <header class="w3-container w3-teal"> 
+                                                  <span onclick="document.getElementById('id01').style.display='none'" 
+                                                  class="w3-button w3-display-topright">&times;</span>
+                                                  <h2>Enter Your Feedback </h2>
+                                                </header>
+                                                <div class="w3-container">
+                                               
+                                                 <input/>
+                                                 <button>submit</button>
+                                                </div>
+                                                  <footer class="w3-container w3-teal ">
+                                                </footer>
+                                              </div>
+                                            </form>
+                                              
+                                            </div>
+                                          <!-- </div> -->
                                 </div>
+                                
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="sw_testimonials_slider">
@@ -387,6 +413,7 @@
                                 </div>
                             </div>
                         </div>
+                       </div>
                     </div>
                 </div>
 
