@@ -1,14 +1,14 @@
 <%- include('../userLayout/head.ejs') %>
 
     <body>
-          <!-- preloader Start -->
+        <!-- preloader Start -->
 
-    <div id="preloader">
-        <div id="status">
-          <img src="/userAssets/images/preloader.gif" id="preloader_image" alt="loader" />
+        <div id="preloader">
+            <div id="status">
+                <img src="/userAssets/images/preloader.gif" id="preloader_image" alt="loader" />
+            </div>
         </div>
-      </div>
-          <!-- preloader Start -->
+        <!-- preloader Start -->
 
         <%- include('../userLayout/nav.ejs') %>
 
@@ -201,7 +201,19 @@
                                                             <tr>
                                                                 <td>warranty:</td>
                                                                 <td>
-                                                                    <%= productData.warranty %>
+                                                                    <%= productData.warranty %> yrs
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Panel Area:</td>
+                                                                <td>
+                                                                    <%= productData.PanelEfficiency %> sqm
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Panel wattage:</td>
+                                                                <td>
+                                                                    <%= productData.Panelwattage %>
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -234,7 +246,8 @@
                                                     </ul>
                                                 </div>
                                             </div>
-                                            <button class="btn btn-primary " onclick="addToCart('<%= productData._id %>')">Add to cart</button>
+                                            <button class="btn btn-primary "
+                                                onclick="addToCart('<%= productData._id %>')">Add to cart</button>
                                         </div>
                                     </div>
 
@@ -248,20 +261,33 @@
                 <div class="sw_news_letter_wrapper sw_new_letter_index">
                     <div class="container">
                         <div class="sw_nl_heading_wrapper">
+
                             <i class="flaticon-rocket"></i>
                             <h2>Calculate your solar panel savings</h2>
+
 
                         </div>
 
                         <div class="sw_nl_form_wrapper">
 
                             <div class="disc_btn ltr_btn">
-                                <ul>
+                                <form id="solarPanelCalculatorForm">
+                                    <label for="monthlyUsage">Enter your average monthly electricity usage (kWh):</label><br>
+                                    <input type="number" id="monthlyUsage" name="monthlyUsage" required><br><br>
+                                    <label for="roofSpace">Enter the available roof space for solar panels (square meters):</label><br>
+                                    <input type="number" id="roofSpace" name="roofSpace" required><br><br>
+                                    <label for="solarInsolation">Enter the average solar insolation (kWh/m²/day):</label><br>
+                                    <input type="number" id="solarInsolation" name="solarInsolation" ><br><br>
+                                    <input type="submit" value="Calculate">
+                                  </form>
+                                  
+                                  <p id="result" style="color: yellow;"></p>
+                                <!-- <ul>
                                     <li>
-                                        <!-- <a href="#!" class="waves-effect waves-light waves-ripple">ask a question</a> -->
+                                      
                                         <button class="btn btn-warning">Check Here</button>
                                     </li>
-                                </ul>
+                                </ul> -->
 
                             </div>
                         </div>
@@ -271,116 +297,156 @@
                 <!-- sw leads section end-->
                 <!--sw testimonial wrapper start-->
                 <div class="sw_testimonial_wrapper">
-                    
+
                     <div class="container">
                         <div class="hhh">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-12 col-xs-12 col-sm-12 col-lg-offset-3">
-                                <div class="sw_left_heading_wraper dark_heading_center">
-                                    <h1>Why Choose Us solar Energy</h1>
-                                    <img src="/userAssets/images/heading_line.png" alt="title">
-                                    <p>Donec quis magna sit amet risus vulputate maximus eget eget arcu. Praesent sed
-                                        molestie
-                                        tortor. </p>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12 col-xs-12 col-sm-12 col-lg-offset-3">
+                                    <div class="sw_left_heading_wraper dark_heading_center">
+                                        <h1>Why Choose Us solar Energy</h1>
+                                        <img src="/userAssets/images/heading_line.png" alt="title">
+                                        <p>Donec quis magna sit amet risus vulputate maximus eget eget arcu. Praesent
+                                            sed
+                                            molestie
+                                            tortor. </p>
                                         <!-- <div class="w3-container"> -->
 
-                                            <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-warning">Add Feedback</button>
-                                          
-                                            <div id="id01" class="w3-modal">
-                                                <form id="feedbackForm" method="post">
-                                                    <div class="w3-modal-content">
-                                                      <header class="w3-container w3-teal"> 
-                                                        <span onclick="document.getElementById('id01').style.display='none'" 
-                                                        class="w3-button w3-display-topright">&times;</span>
+                                        <button onclick="document.getElementById('id01').style.display='block'"
+                                            class="btn btn-warning">Add Feedback</button>
+
+                                        <div id="id01" class="w3-modal">
+                                            <form id="feedbackForm" method="post">
+                                                <div class="w3-modal-content">
+                                                    <header class="w3-container w3-teal">
+                                                        <span
+                                                            onclick="document.getElementById('id01').style.display='none'"
+                                                            class="w3-button w3-display-topright">&times;</span>
                                                         <h2>Enter Your Feedback</h2>
-                                                      </header>
-                                                      <div class="w3-container">
-                                                        <input name="description" id="description" required/>
+                                                    </header>
+                                                    <div class="w3-container">
+                                                        <input name="description" id="description" required />
                                                         <button type="submit">Submit</button>
-                                                      </div>
-                                                      <footer class="w3-container w3-teal"></footer>
                                                     </div>
-                                                  </form>
-                                              
-                                            </div>
-                                          <!-- </div> -->
-                                </div>
-                                
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="sw_testimonials_slider">
-                                    <div class="owl-carousel owl-theme">
-                                        <% if (ratingData.length > 0) { 
-                                            for (let i = 0; i < ratingData.length; i++) { %>
-                                            <div class="item">
-                                                <div class="row">
-                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                        <div class="sw_testimonials_slider_box">
-                                                            <!-- <img src="/userAssets/images/testi_2.png" alt="Testimonial"> -->
-                                                            <div class="sw_testimonials_slider_box_text">
-                                                                <p style="text-wrap: wrap;"><%= ratingData[i].ReviewDescription %></p>
-                                                                <h4><%= ratingData[i].Users.username %></h4>
-                                                       
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <% if (i + 1 < ratingData.length) { %> <!-- Ensure there's a next item -->
-                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 hidden-xs">
-                                                        <div class="sw_testimonials_slider_box">
-                                                            <!-- <img src="/userAssets/images/testi_1.png" alt="Testimonial"> -->
-                                                            <div class="sw_testimonials_slider_box_text">
-                                                                <p style="text-wrap: wrap;"><%= ratingData[i + 1].ReviewDescription %></p>
-                                                                <h4><%= ratingData[i + 1].Users.username %></h4>
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <% i++; } %> <!-- Skip next item since it's already used -->
+                                                    <footer class="w3-container w3-teal"></footer>
                                                 </div>
-                                            </div>
-                                        <% } } %>
+                                            </form>
+
+                                        </div>
+                                        <!-- </div> -->
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="sw_testimonials_slider">
+                                        <div class="owl-carousel owl-theme">
+                                            <% if (ratingData.length> 0) {
+                                                for (let i = 0; i < ratingData.length; i++) { %>
+                                                    <div class="item">
+                                                        <div class="row">
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                <div class="sw_testimonials_slider_box">
+                                                                    <!-- <img src="/userAssets/images/testi_2.png" alt="Testimonial"> -->
+                                                                    <div class="sw_testimonials_slider_box_text">
+                                                                        <p style="text-wrap: wrap;">
+                                                                            <%= ratingData[i].ReviewDescription %>
+                                                                        </p>
+                                                                        <h4>
+                                                                            <%= ratingData[i].Users.username %>
+                                                                        </h4>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <% if (i + 1 < ratingData.length) { %>
+                                                                <!-- Ensure there's a next item -->
+                                                                <div
+                                                                    class="col-lg-6 col-md-6 col-sm-6 col-xs-12 hidden-xs">
+                                                                    <div class="sw_testimonials_slider_box">
+                                                                        <!-- <img src="/userAssets/images/testi_1.png" alt="Testimonial"> -->
+                                                                        <div class="sw_testimonials_slider_box_text">
+                                                                            <p style="text-wrap: wrap;">
+                                                                                <%= ratingData[i + 1].ReviewDescription
+                                                                                    %>
+                                                                            </p>
+                                                                            <h4>
+                                                                                <%= ratingData[i + 1].Users.username %>
+                                                                            </h4>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <% i++; } %>
+                                                                    <!-- Skip next item since it's already used -->
+                                                        </div>
+                                                    </div>
+                                                    <% } } %>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                       </div>
                     </div>
                 </div>
 
                 <!--sw testimonial wrapper end-->
             </div>
-            
+
             <%- include('../userLayout/footer.ejs') %>
 
-            <script>
-                document.getElementById('feedbackForm').addEventListener('submit', async function(event) {
-                  event.preventDefault();
-                  
-                  const description = document.getElementById('description').value;
-                  
-                  try {
-                    const response = await fetch('/singleProduct', {
-                      method: 'POST',
-                      headers: {
-                        'Content-Type': 'application/json'
-                      },
-                      body: JSON.stringify({ description })
-                    });
-                
-                    const result = await response.json();
-                
-                    if (response.ok) {
-                      alert('Rating submitted successfully');
-                      window.location.reload();
-                    } else {
-                      alert(`Error: ${result.error}`);
-                    }
-                  } catch (error) {
-                    console.error('Error:', error);
-                  }
-                })
+                <script>
+                    document.getElementById('feedbackForm').addEventListener('submit', async function (event) {
+                        event.preventDefault();
 
-</script>
+                        const description = document.getElementById('description').value;
+
+                        try {
+                            const response = await fetch('/singleProduct', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({ description })
+                            });
+
+                            const result = await response.json();
+
+                            if (response.ok) {
+                                alert('Rating submitted successfully');
+                                window.location.reload();
+                            } else {
+                                alert(`Error: ${result.error}`);
+                            }
+                        } catch (error) {
+                            console.error('Error:', error);
+                        }
+                    })
+
+
+document.getElementById('solarPanelCalculatorForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const monthlyUsage = document.getElementById('monthlyUsage').value;
+  const roofSpace = document.getElementById('roofSpace').value;
+  const solarInsolation = document.getElementById('solarInsolation').value || 4.5;
+  
+  const result = solarPanelCalculator(monthlyUsage, roofSpace, solarInsolation);
+  document.getElementById('result').textContent = result;
+});
+
+function solarPanelCalculator(monthlyUsage_kwh, roofSpace_sqm, solar_insolation) {
+    const systemSize_kw = monthlyUsage_kwh / (solar_insolation * 30);
+    const panel_wattage =  <%= productData.Panelwattage %>;
+  const panels_needed = systemSize_kw * 1000 / panel_wattage;
+  const panel_area_sqm =  <%= productData.PanelEfficiency %>;
+  const max_panels_roof = roofSpace_sqm / panel_area_sqm;
+  
+  if (panels_needed > max_panels_roof) {
+    return `Insufficient roof space. You can only fit ${Math.floor(max_panels_roof)} panels.`;
+  } else {
+    return `You need ${Math.ceil(panels_needed)} panels.`;
+  }
+}
+
+                </script>
                 <!--main js files-->
 
                 <script src="/userAssets/js/jquery_min.js"></script>

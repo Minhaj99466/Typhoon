@@ -22,9 +22,11 @@ const insertProduct = async (req, res, next) => {
       modelnumber,
       quantity,
       warranty,
+      PanelEfficiency,
+      Panelwattage,
       discription,
     } = req.body;
-    if (!productname || !price || !brand || !modelnumber || !quantity || !warranty || !discription) {
+    if (!productname || !price || !brand || !modelnumber || !quantity || !warranty || !discription || !Panelwattage || !PanelEfficiency) {
       return res.render('errorPage', { message: 'All fields are required.' ,  admin: adminData});
     }
     const image = [];
@@ -42,6 +44,8 @@ const insertProduct = async (req, res, next) => {
       quantity: quantity,
       description: discription,
       warranty: warranty,
+      Panelwattage:Panelwattage,
+      PanelEfficiency:PanelEfficiency,
       image,
       distributor_id: req.session.distributer_id,
     });

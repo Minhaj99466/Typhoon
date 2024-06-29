@@ -29,6 +29,14 @@ const productSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  PanelEfficiency: {
+    type: Number,
+    required: true,
+  },
+  Panelwattage: {
+    type: Number,
+    required: true,
+  },
   image: [{ type: String }],
   action: {
     type: String,

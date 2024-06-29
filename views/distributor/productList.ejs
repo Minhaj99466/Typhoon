@@ -58,7 +58,7 @@
                                  <%= productData[i].warranty %>
                               </td>
                               <td class="flex gap-8 align-items-center">
-                                 <a type="button" class="btn btn-success" href="/distributor/editProduct/<%#= product[i]._id %>">Edit</a>
+                                 <!-- <a type="button" class="btn btn-success" href="/distributor/editProduct/<%#= productData[i]._id %>">Edit</a> -->
                                  <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= productData[i]._id %>">Delete</a>
                               </td>
                            </tr>
@@ -116,6 +116,18 @@
                   <label for="recipient-name" class="col-form-label">Price:</label>
                   <input type="text" name="price" class="form-control" id="price">
                   <span id="price_error" class="text-danger"></span>
+
+               </div>
+               <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label">Panel Area in Sqm:</label>
+                  <input type="text" name="PanelEfficiency" class="form-control" id="PanelEfficiency">
+                  <span id="Efficiency_error" class="text-danger"></span>
+
+               </div>
+               <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label">Panel wattage:</label>
+                  <input type="text" name="Panelwattage" class="form-control" id="Panelwattage">
+                  <span id="wattage_error" class="text-danger"></span>
 
                </div>
                <div class="mb-3">

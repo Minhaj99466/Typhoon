@@ -20,7 +20,7 @@ const discription_error = document.getElementById("discription-error");
 form.addEventListener("submit", (e) => {
     let pricePattern = /^(?:[1-9]\d{0,3}|[1-9]|0)$/;
     let quantityPattern = /^(?:[1-9]\d?|100)$/;
-    let warrantyPattern = /^(?:[1-9]\d?|15)$/; 
+    let warrantyPattern = /^(?:[1-9]\d?|1000)$/; 
     let minDescriptionLength = 150;
   //========== ProductName ==============//
 
@@ -95,6 +95,33 @@ form.addEventListener("submit", (e) => {
     warranty_error.innerHTML = "Enter a Valid Warranty";
   } else {
     warranty_error.innerHTML = "";
+  }
+  //=============== Panel Efficiency =========================//
+
+
+  if ((warranty.value == null) | (warranty.value == "")) {
+    e.preventDefault();
+    Efficiency_error.innerHTML = "Enter Panel Efficiency";
+  }  else if (!warrantyPattern.test(warranty.value)) {
+    e.preventDefault();
+    Efficiency_error.innerHTML = "Enter a Panel Efficiency";
+  } else {
+   Efficiency_error.innerHTML = "";
+  }
+  //=============== wattage_error =========================//
+
+
+  if ((warranty.value == null) | (warranty.value == "")) {
+    e.preventDefault();
+    wattage_error.innerHTML = "Enter Panel wattage";
+  } else if (parseInt(warranty.value, 10) > 15) {
+    e.preventDefault();
+    wattage_error.innerHTML = "Enter a Panel wattage ";
+  } else if (!warrantyPattern.test(warranty.value)) {
+    e.preventDefault();
+    wattage_error.innerHTML = "Enter a Panel wattage";
+  } else {
+    wattage_error.innerHTML = "";
   }
 
 
