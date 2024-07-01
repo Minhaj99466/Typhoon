@@ -1,5 +1,6 @@
 const utils = require("../utils/securepassword");
 const userModel = require("../model/userModel");
+const reviewModel = require("../model/ratingModel");
 const distributerModel = require("../model/distributorModel");
 const productModel = require("../model/productModal")
 
@@ -154,6 +155,17 @@ const productApproval = async (req,res) =>{
   }
 }
 
+const reviewList=async(req,res)=>{
+  try{
+    const adminData = req.adminData || {};
+    const userData = await reviewModel.find().populate('Users', 'username');
+    console.log(userData);
+    res.render("reviewList", { userData ,  admin: adminData });
+  }catch(error){
+    console.log(error);
+  }
+}
+
 module.exports = {
   loadLogin,
   verifyLogin,
@@ -168,4 +180,5 @@ module.exports = {
   loadProductApprovePage,
   productDetails,
   productApproval,
+  reviewList
 };

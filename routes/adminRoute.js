@@ -14,6 +14,8 @@ adminRoute.get("/logout",adminController.adminLogout)
 
 //=================== ADMIN USERLIST AND BLOCK & UN-BLOCK============= //
 adminRoute.get("/userlist",auth.adminIsLogin,adminController.userList);
+
+adminRoute.get("/userlist",auth.adminIsLogin,adminController.userList);
 adminRoute.get("/blockuser/:id",adminController.userBlock)
 adminRoute.get('/unblockuser/:id',adminController.userUnblock)
 
@@ -24,6 +26,8 @@ adminRoute.get('/unblockdistributer/:id',adminController.distributerUnblock)
 adminRoute.get("/productapprove", auth.adminIsLogin,adminController.loadProductApprovePage)
 adminRoute.get("/productdetails/:id",adminController.productDetails)
 adminRoute.post('/product/approval',adminController.productApproval)
+
+adminRoute.get('/review',auth.adminIsLogin,adminController.reviewList)
 
 adminRoute.get("*", function (req, res) {
   res.redirect("/admin");
