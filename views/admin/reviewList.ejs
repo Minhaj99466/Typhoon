@@ -14,7 +14,7 @@
                            <tr>
                               <th> No</th>
                               <th> username </th>
-                              <th> Number </th>
+                              <th> Reviews </th>
                            </tr>
                         </thead>
                         <tbody>
@@ -33,28 +33,7 @@
                              
                           
                            </tr>
-                           <div class="modal fade" id="staticBackdrop<%= userData[i]._id %>" data-bs-backdrop="static"
-                              data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                              aria-hidden="true">
-                           <div class="modal-dialog">
-                           <div class="modal-content" style="background-color: #191C24;color: aliceblue;">
-                           <div class="modal-header">
-                           <h5 class="modal-title" id="staticBackdropLabel">Block User</h5>
-                           <button type="button" class="btn-close" data-bs-dismiss="modal"
-                              aria-label="Close"></button>
-                           </div>
-                           <div class="modal-body">
-                           <p>Are you sure you want to block <%= userData[i].username %> ?</p>
-                           </div>
-                           <div class="modal-footer">
-                           <a href="/admin/userlist"><button type="button" class="btn btn-secondary"
-                              data-bs-dismiss="modal">Close</button></a>
-                           <a href="/admin/blockuser/<%= userData[i]._id %>"><button type="button"
-                              class="btn btn-primary">Yes</button></a>
-                           </div>
-                           </div>
-                           </div>
-                           </div>
+                          
                            <% } } else{ %>
                            <tr>
                               <td colspan="5">Users not found</td>
