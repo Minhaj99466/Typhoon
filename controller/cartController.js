@@ -256,6 +256,7 @@ const placeOrder = async (req, res, next) => {
       address: address,
       postcode: postcode,
     };
+    console.log("hello iam minhat,",req.body);
 
     // Status is directly set to 'placed' for COD
     const status = "placed";

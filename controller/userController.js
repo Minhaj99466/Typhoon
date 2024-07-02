@@ -2,6 +2,7 @@ const productModel = require("../model/productModal");
 const Cart = require("../model/cartModel");
 const Order = require("../model/orderModel");
 const Rating = require("../model/ratingModel")
+const stripe = require('stripe')('sk_test_51O7buMSAHGGVNWH2POHgAvRlGC70JqBnwu9eUElqD7kNIHtPOA4M3LesSc8lUiiBpqkZgaMT9xKIhYH9C0Q7hI4800gevTB7qq')
 
 //=============================   ABOUT PAGE LOAD  ========================//
 
@@ -132,6 +133,7 @@ const addRating = async(req,res,next) =>{
   }
 }
 
+
 module.exports = {
   loadAbout,
   loadCheckOut,
@@ -142,5 +144,5 @@ module.exports = {
   loadSingle,
   loadOrder,
   loadSuccess,
-  addRating
+  addRating,
 };
